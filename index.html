@@ -345,6 +345,7 @@
     <button class="btn-checkout" onclick="checkout()">Proceder al Pago</button>
     <p class="cart-secure">🔒 Pago seguro con cifrado SSL</p>
   </div>
+      </div>      
   <script>
 const cursor = document.getElementById('cursor');
 const ring = document.getElementById('cursorRing');
@@ -363,15 +364,15 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 const products = [
   { id:1, category:'iPhones', badge:'Más Vendido', name:'iPhone 16 Pro Max', subtitle:'Titanio Oro Rosa', price:1199, currency:'€',
     desc:'El chip A18 Pro redefine lo posible. Cámara de 48 MP con zoom óptico 5×.',
-    narrative:'El iPhone 16 Pro Max no es un teléfono. Es la convergencia de ingeniería aeroespacial y diseño de alta joyería. Su chasis de titanio de grado 5 en acabado oro rosa ofrece una rigidez excepcional. El chip A18 Pro ejecuta modelos de inteligencia artificial directamente en el dispositivo, convirtiendo cada disparo fotográfico en una obra maestra.',
+    narrative:'El iPhone 16 Pro Max no es un teléfono. Es la convergencia de ingeniería aeroespacial y diseño de alta joyería. Su chasis de titanio de grado 5 en acabado oro rosa ofrece una rigidez excepcional. El chip A18 Pro ejecuta modelos de inteligencia artificial directamente en el dispositivo.',
     limited:'Solo 3 unidades',
     specs:[['Pantalla','Super Retina XDR 6.9"'],['Procesador','Apple A18 Pro'],['Cámara principal','48 MP Fusión'],['Zoom óptico','5×'],['Almacenamiento','256 GB'],['Color','Titanio Oro Rosa'],['Garantía AURUM','1 año completo']],
     img:'https://i.ibb.co/G4NtjR5m/Screenshot-20260308-012629-Wallapop-2.jpg',
     imgs:['https://i.ibb.co/G4NtjR5m/Screenshot-20260308-012629-Wallapop-2.jpg','https://i.ibb.co/WpNkBRYf/Screenshot-20260308-012623-Wallapop.jpg','https://i.ibb.co/Zp95hJrj/Screenshot-20260308-012618-Wallapop.jpg','https://i.ibb.co/1YwwdxK6/Screenshot-20260308-012612-Wallapop.jpg']
   },
-  { id:2, category:'iPhones', badge:'Nuevo', name:'iPhone 16 Pro Max', subtitle:'Titanio — Vista lateral', price:1199, currency:'€',
+  { id:2, category:'iPhones', badge:'Nuevo', name:'iPhone 16 Pro Max', subtitle:'Titanio — Vista completa', price:1199, currency:'€',
     desc:'Diseño en titanio con puerto USB-C de alta velocidad.',
-    narrative:'Cada detalle del iPhone 16 Pro Max ha sido cuidadosamente diseñado. El puerto USB-C compatible con USB 3 permite transferencias de datos a velocidades sin precedentes, y el botón de Acción personalizable añade una dimensión completamente nueva a la experiencia.',
+    narrative:'Cada detalle del iPhone 16 Pro Max ha sido cuidadosamente diseñado. El puerto USB-C compatible con USB 3 permite transferencias de datos a velocidades sin precedentes.',
     limited:null,
     specs:[['Puerto','USB-C (USB 3)'],['Botón Acción','Personalizable'],['Cámara frontal','12 MP TrueDepth'],['5G','Compatible'],['FaceID','Sí'],['Color','Titanio Oro Rosa'],['Garantía AURUM','1 año completo']],
     img:'https://i.ibb.co/20bLqMYM/Screenshot-20260308-013458-Wallapop.jpg',
@@ -382,20 +383,20 @@ const products = [
     narrative:'El iPhone 16 representa la evolución perfecta para quien quiere lo mejor sin compromisos. Con el nuevo botón de Acción y la lente macro mejorada, cada momento se convierte en una oportunidad creativa.',
     limited:null,
     specs:[['Pantalla','Super Retina XDR 6.1"'],['Procesador','Apple A16 Bionic'],['Cámara principal','48 MP'],['Zoom óptico','2×'],['Almacenamiento','128 GB'],['Material','Aluminio aeroespacial'],['Garantía AURUM','1 año completo']],
-    img:'https://i.ibb.co/N2636233/Screenshot-20260308-013449-Wallapop.jpg',
-    imgs:['https://i.ibb.co/N2636233/Screenshot-20260308-013449-Wallapop.jpg','https://i.ibb.co/N63FstWm/Screenshot-20260308-014125-Wallapop.jpg','https://i.ibb.co/N2636233/Screenshot-20260308-013449-Wallapop.jpg']
+    img:'https://i.ibb.co/N63FstWm/Screenshot-20260308-014125-Wallapop.jpg',
+    imgs:['https://i.ibb.co/N63FstWm/Screenshot-20260308-014125-Wallapop.jpg','https://i.ibb.co/N2636233/Screenshot-20260308-013449-Wallapop.jpg','https://i.ibb.co/N63FstWm/Screenshot-20260308-014125-Wallapop.jpg']
   },
   { id:4, category:'iPhones', badge:'Premium', name:'iPhone 15 Pro Max', subtitle:'Titanio Natural', price:999, currency:'€',
     desc:'El primer iPhone con titanio. Chip A17 Pro y cámara periscópica.',
-    narrative:'El iPhone 15 Pro Max introdujo el titanio en la familia iPhone, marcando un antes y un después en el diseño de smartphones. Su sistema de cámara con zoom periscópico 5× ofreció capacidades fotográficas reservadas hasta entonces a cámaras de alta gama.',
+    narrative:'El iPhone 15 Pro Max introdujo el titanio en la familia iPhone. Su sistema de cámara con zoom periscópico 5× ofreció capacidades fotográficas reservadas hasta entonces a cámaras de alta gama.',
     limited:'Últimas unidades',
     specs:[['Pantalla','Super Retina XDR 6.7"'],['Procesador','Apple A17 Pro'],['Zoom óptico','5× Periscópico'],['Almacenamiento','256 GB'],['Material','Titanio Grado 5'],['Puerto','USB-C'],['Garantía AURUM','1 año completo']],
-    img:'https://i.ibb.co/PGtnyY3g/Screenshot-20260308-014122-Wallapop.jpg',
-    imgs:['https://i.ibb.co/PGtnyY3g/Screenshot-20260308-014122-Wallapop.jpg','https://i.ibb.co/gMN16Xrw/Screenshot-20260308-014615-Wallapop.jpg','https://i.ibb.co/PGtnyY3g/Screenshot-20260308-014122-Wallapop.jpg']
+    img:'https://i.ibb.co/N2636233/Screenshot-20260308-013449-Wallapop.jpg',
+    imgs:['https://i.ibb.co/N2636233/Screenshot-20260308-013449-Wallapop.jpg','https://i.ibb.co/PGtnyY3g/Screenshot-20260308-014122-Wallapop.jpg','https://i.ibb.co/N2636233/Screenshot-20260308-013449-Wallapop.jpg']
   },
   { id:5, category:'AirPods', badge:'Exclusivo', name:'AirPods Pro Max', subtitle:'Cancelación Total de Ruido', price:549, currency:'€',
     desc:'Cancelación activa de ruido premium. Audio de nivel estudio.',
-    narrative:'Los AirPods Max representan la cima del audio personal de Apple. Sus almohadillas de malla transpirable y la diadema de malla de acero inoxidable ofrecen una comodidad inigualable. La cancelación activa de ruido crea una burbuja de silencio absoluto en cualquier entorno.',
+    narrative:'Los AirPods Max representan la cima del audio personal de Apple. La cancelación activa de ruido crea una burbuja de silencio absoluto en cualquier entorno.',
     limited:'Edición Limitada',
     specs:[['Chip','Apple H1 (por oído)'],['Cancelación de ruido','Activa Premium'],['Audio espacial','Sí, dinámico'],['Autonomía','20h con ANC'],['Resistencia','IPX4'],['Material','Aluminio anodizado'],['Garantía AURUM','1 año completo']],
     img:'https://i.ibb.co/B5w8GrDW/Screenshot-20260308-013502-Wallapop.jpg',
@@ -403,87 +404,87 @@ const products = [
   },
   { id:6, category:'AirPods', badge:'Nuevo', name:'AirPods Pro 2', subtitle:'Chip H2 — MagSafe', price:279, currency:'€',
     desc:'Cancelación de ruido H2. Dos veces más eficaz que la generación anterior.',
-    narrative:'Los AirPods Pro de segunda generación con chip H2 ofrecen una cancelación de ruido radicalmente mejorada. El audio adaptativo ajusta en tiempo real el nivel de inmersión según tu entorno.',
+    narrative:'Los AirPods Pro de segunda generación con chip H2 ofrecen una cancelación de ruido radicalmente mejorada. El audio adaptativo ajusta en tiempo real el nivel de inmersión.',
     limited:null,
-    specs:[['Chip','Apple H2'],['Cancelación de ruido','Activa (ANC)'],['Audio espacial','Sí, dinámico'],['Autonomía','6h + 30h estuche'],['Resistencia','IP54'],['Carga','MagSafe / Lightning'],['Garantía AURUM','1 año completo']],
-    img:'https://i.ibb.co/mrZxGN55/Screenshot-20260308-013452-Wallapop.jpg',
-    imgs:['https://i.ibb.co/mrZxGN55/Screenshot-20260308-013452-Wallapop.jpg','https://i.ibb.co/B5w8GrDW/Screenshot-20260308-013502-Wallapop.jpg','https://i.ibb.co/Df7BKXhs/Screenshot-20260308-012605-Wallapop.jpg']
+    specs:[['Chip','Apple H2'],['Cancelación de ruido','Activa (ANC)'],['Audio espacial','Sí, dinámico'],['Autonomía','6h + 30h estuche'],['Resistencia','IP54'],['Carga','MagSafe'],['Garantía AURUM','1 año completo']],
+    img:'https://i.ibb.co/Df7BKXhs/Screenshot-20260308-012605-Wallapop.jpg',
+    imgs:['https://i.ibb.co/Df7BKXhs/Screenshot-20260308-012605-Wallapop.jpg','https://i.ibb.co/B5w8GrDW/Screenshot-20260308-013502-Wallapop.jpg','https://i.ibb.co/k2nsCmSC/Screenshot-20260308-012602-Wallapop.jpg']
   },
   { id:7, category:'AirPods', badge:'Nuevo 2024', name:'AirPods 4', subtitle:'Diseño Rediseñado', price:149, currency:'€',
     desc:'Nuevo diseño ergonómico. Cancelación activa de ruido en formato abierto.',
-    narrative:'Los AirPods 4 representan una revolución en diseño. Por primera vez, la cancelación activa de ruido llega a un auricular de formato abierto, sin almohadillas de silicona.',
+    narrative:'Los AirPods 4 representan una revolución en diseño. Por primera vez, la cancelación activa de ruido llega a un auricular de formato abierto sin almohadillas.',
     limited:null,
     specs:[['Chip','Apple H2'],['Tipo','In-ear sin silicona'],['Cancelación de ruido','Activa (ANC)'],['Autonomía','5h + 25h estuche'],['Resistencia','IP54'],['Carga','USB-C'],['Garantía AURUM','1 año completo']],
-    img:'https://i.ibb.co/KxzZx1FK/Screenshot-20260308-014558-Wallapop.jpg',
-    imgs:['https://i.ibb.co/KxzZx1FK/Screenshot-20260308-014558-Wallapop.jpg','https://i.ibb.co/mrZxGN55/Screenshot-20260308-013452-Wallapop.jpg','https://i.ibb.co/KxzZx1FK/Screenshot-20260308-014558-Wallapop.jpg']
+    img:'https://i.ibb.co/PGtnyY3g/Screenshot-20260308-014122-Wallapop.jpg',
+    imgs:['https://i.ibb.co/PGtnyY3g/Screenshot-20260308-014122-Wallapop.jpg','https://i.ibb.co/gMN16Xrw/Screenshot-20260308-014615-Wallapop.jpg','https://i.ibb.co/PGtnyY3g/Screenshot-20260308-014122-Wallapop.jpg']
   },
   { id:8, category:'Relojes', badge:'Premium', name:'Apple Watch Ultra 2', subtitle:'Titanio Aeroespacial', price:849, currency:'€',
     desc:'El reloj de aventura definitivo. Pantalla 2000 nits y 60h de batería.',
-    narrative:'El Apple Watch Ultra 2 está construido para quienes no conocen límites. Su caja de titanio resistente a golpes, la pantalla más brillante jamás creada por Apple y la batería de 60 horas lo convierten en el compañero ideal.',
+    narrative:'El Apple Watch Ultra 2 está construido para quienes no conocen límites. Su caja de titanio y batería de 60 horas lo convierten en el compañero ideal.',
     limited:null,
     specs:[['Caja','Titanio 49 mm'],['Pantalla','LTPO OLED 2000 nits'],['Chip','Apple S9'],['Autonomía','Hasta 60 horas'],['Resistencia al agua','100 m EN13319'],['GPS','Doble frecuencia L1/L5'],['Garantía AURUM','1 año completo']],
-    img:'https://i.ibb.co/jZ8GRZgd/Screenshot-20260308-015005-Wallapop.jpg',
-    imgs:['https://i.ibb.co/jZ8GRZgd/Screenshot-20260308-015005-Wallapop.jpg','https://i.ibb.co/jZ8GRZgd/Screenshot-20260308-015005-Wallapop.jpg','https://i.ibb.co/jZ8GRZgd/Screenshot-20260308-015005-Wallapop.jpg']
+    img:'https://i.ibb.co/KxzZx1FK/Screenshot-20260308-014558-Wallapop.jpg',
+    imgs:['https://i.ibb.co/KxzZx1FK/Screenshot-20260308-014558-Wallapop.jpg','https://i.ibb.co/KxzZx1FK/Screenshot-20260308-014558-Wallapop.jpg','https://i.ibb.co/KxzZx1FK/Screenshot-20260308-014558-Wallapop.jpg']
   },
   { id:9, category:'Relojes', badge:'Icónico', name:'Rolex Submariner', subtitle:'Acero Oystersteel', price:9850, currency:'€',
     desc:'El reloj de buceo más icónico. 300 m de resistencia al agua.',
-    narrative:'Presentado en 1953, el Submariner fue el primer reloj suizo resistente al agua hasta 100 metros. Poseer un Submariner no es comprar un reloj; es heredar una leyenda.',
+    narrative:'Presentado en 1953, el Submariner fue el primer reloj suizo resistente al agua. Poseer un Submariner no es comprar un reloj; es heredar una leyenda.',
     limited:'Solo 1 unidad',
     specs:[['Referencia','124060'],['Caja','Oystersteel 41 mm'],['Calibre','Rolex 3235'],['Reserva de marcha','70 horas'],['Resistencia','300 m / 30 bar'],['Cristal','Zafiro antirreflectante'],['Certificación','COSC + Superlativo']],
-    img:'https://i.ibb.co/S4f8hrsC/Screenshot-20260308-015203-Wallapop.jpg',
-    imgs:['https://i.ibb.co/S4f8hrsC/Screenshot-20260308-015203-Wallapop.jpg','https://i.ibb.co/S4f8hrsC/Screenshot-20260308-015203-Wallapop.jpg','https://i.ibb.co/S4f8hrsC/Screenshot-20260308-015203-Wallapop.jpg']
+    img:'https://i.ibb.co/jZ8GRZgd/Screenshot-20260308-015005-Wallapop.jpg',
+    imgs:['https://i.ibb.co/jZ8GRZgd/Screenshot-20260308-015005-Wallapop.jpg','https://i.ibb.co/jZ8GRZgd/Screenshot-20260308-015005-Wallapop.jpg','https://i.ibb.co/jZ8GRZgd/Screenshot-20260308-015005-Wallapop.jpg']
   },
   { id:10, category:'Perfumes', badge:'Bestseller', name:'Dior Sauvage', subtitle:'Eau de Parfum 100 ml', price:129, currency:'€',
     desc:'La fragancia más vendida del mundo. Fresco, amaderado e intenso.',
     narrative:'Dior Sauvage es una fuerza de la naturaleza embotellada. Su composición de bergamota de Calabria y ambroxán crea una estela magnética que permanece horas después.',
     limited:null,
     specs:[['Familia olfativa','Aromática Fresca'],['Notas de salida','Bergamota, Pimienta'],['Notas de corazón','Lavanda, Geranio'],['Notas de fondo','Ambroxán, Cedro, Vetiver'],['Concentración','Eau de Parfum'],['Volumen','100 ml'],['Origen','Francia']],
-    img:'https://i.ibb.co/LdP72wNr/Screenshot-20260308-015429-Chrome.jpg',
-    imgs:['https://i.ibb.co/LdP72wNr/Screenshot-20260308-015429-Chrome.jpg','https://i.ibb.co/LdP72wNr/Screenshot-20260308-015429-Chrome.jpg','https://i.ibb.co/LdP72wNr/Screenshot-20260308-015429-Chrome.jpg']
+    img:'https://i.ibb.co/S4f8hrsC/Screenshot-20260308-015203-Wallapop.jpg',
+    imgs:['https://i.ibb.co/S4f8hrsC/Screenshot-20260308-015203-Wallapop.jpg','https://i.ibb.co/S4f8hrsC/Screenshot-20260308-015203-Wallapop.jpg','https://i.ibb.co/S4f8hrsC/Screenshot-20260308-015203-Wallapop.jpg']
   },
   { id:11, category:'Perfumes', badge:'Lujo', name:'Chanel Nº5', subtitle:'Eau de Parfum 100 ml', price:165, currency:'€',
     desc:'El perfume más famoso del mundo. Elegancia atemporal.',
-    narrative:'Chanel Nº5 es más que un perfume: es un símbolo cultural. Creado en 1921, su bouquet floral aldehído revolucionó el mundo de la perfumería. Más de un siglo después, sigue siendo el epítome de la elegancia francesa.',
+    narrative:'Chanel Nº5 es más que un perfume: es un símbolo cultural. Creado en 1921, su bouquet floral aldehído sigue siendo el epítome de la elegancia francesa.',
     limited:null,
     specs:[['Familia olfativa','Floral Aldehído'],['Notas de salida','Aldehídos, Neroli, Bergamota'],['Notas de corazón','Rosa, Jazmín, Ylang-ylang'],['Notas de fondo','Sándalo, Vainilla, Almizcle'],['Concentración','Eau de Parfum'],['Volumen','100 ml'],['Origen','Francia']],
-    img:'https://i.ibb.co/fzSqpxzR/Screenshot-20260308-015803-Google.jpg',
-    imgs:['https://i.ibb.co/fzSqpxzR/Screenshot-20260308-015803-Google.jpg','https://i.ibb.co/fzSqpxzR/Screenshot-20260308-015803-Google.jpg','https://i.ibb.co/fzSqpxzR/Screenshot-20260308-015803-Google.jpg']
+    img:'https://i.ibb.co/LdP72wNr/Screenshot-20260308-015429-Chrome.jpg',
+    imgs:['https://i.ibb.co/LdP72wNr/Screenshot-20260308-015429-Chrome.jpg','https://i.ibb.co/LdP72wNr/Screenshot-20260308-015429-Chrome.jpg','https://i.ibb.co/LdP72wNr/Screenshot-20260308-015429-Chrome.jpg']
   },
   { id:12, category:'Moda', badge:'Exclusivo', name:'Camisa Armani Premium', subtitle:'Algodón Egipcio', price:320, currency:'€',
     desc:'Confeccionada en algodón egipcio de 200 hilos. Corte italiano perfecto.',
-    narrative:'Giorgio Armani elevó la camisa de hombre a obra de arte. Esta pieza de la colección premium está confeccionada en algodón egipcio de fibra larga, con un tejido de 200 hilos.',
+    narrative:'Giorgio Armani elevó la camisa de hombre a obra de arte. Confeccionada en algodón egipcio de fibra larga con un tejido de 200 hilos.',
     limited:null,
     specs:[['Material','Algodón egipcio 200 hilos'],['Corte','Slim fit italiano'],['Botones','Nácar auténtico'],['Cuello','Italiano clásico'],['Tallas','S, M, L, XL'],['Cuidado','Tintorería recomendada'],['Origen','Milán, Italia']],
-    img:'https://i.ibb.co/84Kx1TZ7/Screenshot-20260308-020107-Google.jpg',
-    imgs:['https://i.ibb.co/84Kx1TZ7/Screenshot-20260308-020107-Google.jpg','https://i.ibb.co/84Kx1TZ7/Screenshot-20260308-020107-Google.jpg','https://i.ibb.co/84Kx1TZ7/Screenshot-20260308-020107-Google.jpg']
+    img:'https://i.ibb.co/fzSqpxzR/Screenshot-20260308-015803-Google.jpg',
+    imgs:['https://i.ibb.co/fzSqpxzR/Screenshot-20260308-015803-Google.jpg','https://i.ibb.co/fzSqpxzR/Screenshot-20260308-015803-Google.jpg','https://i.ibb.co/fzSqpxzR/Screenshot-20260308-015803-Google.jpg']
   },
   { id:13, category:'Moda', badge:'Hype', name:'Sneakers Balenciaga', subtitle:'Triple S — Edición Especial', price:895, currency:'€',
     desc:'Las sneakers más icónicas del streetwear de lujo. Triple suela.',
-    narrative:'Las Balenciaga Triple S redefinieron el concepto de calzado de lujo. Su triple suela de construcción compleja crea una silueta imponente que ha influenciado toda una generación de diseñadores.',
+    narrative:'Las Balenciaga Triple S redefinieron el concepto de calzado de lujo. Su triple suela crea una silueta imponente que ha influenciado toda una generación de diseñadores.',
     limited:'Edición Limitada',
     specs:[['Marca','Balenciaga'],['Modelo','Triple S'],['Material superior','Malla técnica + cuero'],['Suela','Triple EVA/goma'],['Tallas','38-46'],['Caja original','Incluida'],['Autenticidad','Certificada']],
-    img:'https://i.ibb.co/9kJS34fx/Screenshot-20260308-020317-Google.jpg',
-    imgs:['https://i.ibb.co/9kJS34fx/Screenshot-20260308-020317-Google.jpg','https://i.ibb.co/9kJS34fx/Screenshot-20260308-020317-Google.jpg','https://i.ibb.co/9kJS34fx/Screenshot-20260308-020317-Google.jpg']
+    img:'https://i.ibb.co/84Kx1TZ7/Screenshot-20260308-020107-Google.jpg',
+    imgs:['https://i.ibb.co/84Kx1TZ7/Screenshot-20260308-020107-Google.jpg','https://i.ibb.co/84Kx1TZ7/Screenshot-20260308-020107-Google.jpg','https://i.ibb.co/84Kx1TZ7/Screenshot-20260308-020107-Google.jpg']
   },
   { id:14, category:'Moda', badge:'Lujo', name:'Blazer Zegna', subtitle:'Lana Merino Italiana', price:1450, currency:'€',
     desc:'Sastrería italiana de la más alta tradición. Lana merino 130s.',
-    narrative:'Ermenegildo Zegna es sinónimo de la sastrería italiana más refinada. Este blazer de lana merino 130s ultrafina representa décadas de maestría artesanal.',
+    narrative:'Ermenegildo Zegna es sinónimo de la sastrería italiana más refinada. Este blazer representa décadas de maestría artesanal.',
     limited:null,
     specs:[['Marca','Ermenegildo Zegna'],['Material','Lana merino 130s'],['Forro','Seda'],['Botones','Cuerno natural'],['Confección','Sastre a mano'],['Tallas','46-56 IT'],['Origen','Trivero, Italia']],
-    img:'https://i.ibb.co/WNp7VCrc/Screenshot-20260308-020459-Google.jpg',
-    imgs:['https://i.ibb.co/WNp7VCrc/Screenshot-20260308-020459-Google.jpg','https://i.ibb.co/WNp7VCrc/Screenshot-20260308-020459-Google.jpg','https://i.ibb.co/WNp7VCrc/Screenshot-20260308-020459-Google.jpg']
+    img:'https://i.ibb.co/9kJS34fx/Screenshot-20260308-020317-Google.jpg',
+    imgs:['https://i.ibb.co/9kJS34fx/Screenshot-20260308-020317-Google.jpg','https://i.ibb.co/9kJS34fx/Screenshot-20260308-020317-Google.jpg','https://i.ibb.co/9kJS34fx/Screenshot-20260308-020317-Google.jpg']
   },
   { id:15, category:'Moda', badge:'Icónico', name:'Air Jordan 1 Retro', subtitle:'High OG — Chicago', price:380, currency:'€',
     desc:'El sneaker más histórico de todos los tiempos. Colorway original Chicago.',
-    narrative:'El Air Jordan 1, diseñado en 1985, no es solo un zapato: es el inicio de una revolución cultural. El colorway Chicago fue el que calzó Michael Jordan en su primera temporada NBA.',
+    narrative:'El Air Jordan 1 no es solo un zapato: es el inicio de una revolución cultural. El colorway Chicago fue el que calzó Michael Jordan en su primera temporada NBA.',
     limited:'Solo 2 pares',
     specs:[['Modelo','Air Jordan 1 Retro High OG'],['Colorway','Chicago (Black/Red/White)'],['Suela','Air-Sole'],['Material','Cuero genuino'],['Altura','High-top'],['Tallas','40-47 EU'],['Autenticidad','Certificada Nike']],
-    img:'https://i.ibb.co/svg3qjnq/Screenshot-20260308-020747-Google-2.jpg',
-    imgs:['https://i.ibb.co/svg3qjnq/Screenshot-20260308-020747-Google-2.jpg','https://i.ibb.co/svg3qjnq/Screenshot-20260308-020747-Google-2.jpg','https://i.ibb.co/svg3qjnq/Screenshot-20260308-020747-Google-2.jpg']
+    img:'https://i.ibb.co/WNp7VCrc/Screenshot-20260308-020459-Google.jpg',
+    imgs:['https://i.ibb.co/WNp7VCrc/Screenshot-20260308-020459-Google.jpg','https://i.ibb.co/WNp7VCrc/Screenshot-20260308-020459-Google.jpg','https://i.ibb.co/WNp7VCrc/Screenshot-20260308-020459-Google.jpg']
   },
   { id:16, category:'Moda', badge:'Premium', name:'Zapatos Gucci', subtitle:'Leather Loafer — Horsebit', price:720, currency:'€',
     desc:'El mocasín más reconocible del mundo. Detalle Horsebit dorado.',
-    narrative:'El mocasín Horsebit de Gucci nació en 1953 y se ha convertido en uno de los iconos de la moda masculina más duraderos. El detalle metálico dorado es inmediatamente reconocible.',
+    narrative:'El mocasín Horsebit de Gucci nació en 1953 y se ha convertido en uno de los iconos de la moda masculina más duraderos.',
     limited:null,
     specs:[['Marca','Gucci'],['Modelo','Horsebit Loafer'],['Material','Cuero de becerro'],['Suela','Cuero cosido'],['Detalle','Horsebit dorado'],['Tallas','39-46 EU'],['Origen','Florencia, Italia']],
     img:'https://i.ibb.co/PGtP4Shh/Screenshot-20260308-021353-Google.jpg',
@@ -491,7 +492,7 @@ const products = [
   },
   { id:17, category:'Electrónica', badge:'Potencia', name:'MacBook Pro M4', subtitle:'Chip M4 Pro — 14"', price:2199, currency:'€',
     desc:'El laptop más potente jamás creado. Chip M4 Pro con NPU de 38 TOPS.',
-    narrative:'El MacBook Pro con chip M4 Pro redefine lo que es posible en un portátil. Rendimiento sostenido sin calentamiento, pantalla Liquid Retina XDR y hasta 22 horas de batería.',
+    narrative:'El MacBook Pro con chip M4 Pro redefine lo que es posible en un portátil. Hasta 22 horas de batería y pantalla Liquid Retina XDR.',
     limited:null,
     specs:[['Chip','Apple M4 Pro'],['RAM','24 GB unificada'],['Almacenamiento','512 GB SSD'],['Pantalla','14.2" Liquid Retina XDR'],['Batería','Hasta 22 horas'],['Puertos','3× Thunderbolt 4, HDMI, SD'],['Garantía AURUM','1 año completo']],
     img:'https://i.ibb.co/GvCWXLxj/Screenshot-20260308-021647-Wallapop-2.jpg',
@@ -499,23 +500,23 @@ const products = [
   },
   { id:18, category:'Electrónica', badge:'Gaming', name:'PS5 Slim', subtitle:'PlayStation 5 — Digital Edition', price:449, currency:'€',
     desc:'La consola más rápida de Sony. 30% más ligera que el modelo original.',
-    narrative:'La PS5 Slim mantiene toda la potencia de la PlayStation 5 original en un formato más compacto. Su SSD ultrarrápido elimina los tiempos de carga prácticamente por completo.',
+    narrative:'La PS5 Slim mantiene toda la potencia original en un formato más compacto. Su SSD ultrarrápido elimina los tiempos de carga prácticamente por completo.',
     limited:'Pocas unidades',
     specs:[['CPU','AMD Zen 2 8 núcleos 3.5GHz'],['GPU','AMD RDNA 2 10.3 TFLOPS'],['RAM','16 GB GDDR6'],['Almacenamiento','825 GB SSD NVMe'],['Resolución','4K / 120fps'],['Ray Tracing','Sí'],['Garantía AURUM','1 año completo']],
-    img:'https://i.ibb.co/TBBQBCps/Screenshot-20260308-021215-Google.jpg',
-    imgs:['https://i.ibb.co/TBBQBCps/Screenshot-20260308-021215-Google.jpg','https://i.ibb.co/TBBQBCps/Screenshot-20260308-021215-Google.jpg','https://i.ibb.co/TBBQBCps/Screenshot-20260308-021215-Google.jpg']
+    img:'https://i.ibb.co/svg3qjnq/Screenshot-20260308-020747-Google-2.jpg',
+    imgs:['https://i.ibb.co/svg3qjnq/Screenshot-20260308-020747-Google-2.jpg','https://i.ibb.co/svg3qjnq/Screenshot-20260308-020747-Google-2.jpg','https://i.ibb.co/svg3qjnq/Screenshot-20260308-020747-Google-2.jpg']
   },
   { id:19, category:'Electrónica', badge:'Audio', name:'Sony WH-1000XM5', subtitle:'Cancelación de Ruido Premium', price:349, currency:'€',
     desc:'Los mejores auriculares con cancelación de ruido del mercado.',
     narrative:'Los Sony WH-1000XM5 representan la cima de la ingeniería de audio portátil. Con 8 micrófonos y dos procesadores dedicados, la cancelación de ruido es la mejor del mercado.',
     limited:null,
     specs:[['Controlador','30 mm dinámico'],['Cancelación de ruido','8 micrófonos + 2 procesadores'],['Autonomía','30h con ANC'],['Audio','LDAC / HiRes'],['Codec','LDAC, aptX, AAC, SBC'],['Plegable','Sí'],['Garantía AURUM','1 año completo']],
-    img:'https://i.ibb.co/1JZ7dhJD/Screenshot-20260308-021843-Wallapop.jpg',
-    imgs:['https://i.ibb.co/1JZ7dhJD/Screenshot-20260308-021843-Wallapop.jpg','https://i.ibb.co/1JZ7dhJD/Screenshot-20260308-021843-Wallapop.jpg','https://i.ibb.co/1JZ7dhJD/Screenshot-20260308-021843-Wallapop.jpg']
+    img:'https://i.ibb.co/TBBQBCps/Screenshot-20260308-021215-Google.jpg',
+    imgs:['https://i.ibb.co/TBBQBCps/Screenshot-20260308-021215-Google.jpg','https://i.ibb.co/TBBQBCps/Screenshot-20260308-021215-Google.jpg','https://i.ibb.co/TBBQBCps/Screenshot-20260308-021215-Google.jpg']
   },
   { id:20, category:'Electrónica', badge:'TV 4K', name:'LG OLED 65" 4K', subtitle:'OLED evo — 120Hz', price:1799, currency:'€',
     desc:'Negros perfectos e infinito contraste. La mejor televisión del mundo.',
-    narrative:'La tecnología OLED de LG ofrece lo que ningún otro panel puede: negros perfectos y absolutos. Cada píxel genera su propia luz y puede apagarse completamente.',
+    narrative:'La tecnología OLED de LG ofrece negros perfectos y absolutos. Cada píxel genera su propia luz y puede apagarse completamente.',
     limited:null,
     specs:[['Panel','OLED evo α9 Gen7'],['Resolución','4K UHD (3840×2160)'],['Tasa de refresco','120Hz nativo'],['HDR','Dolby Vision, HDR10, HLG'],['Audio','Dolby Atmos 2.2ch 40W'],['Smart TV','webOS 24'],['Garantía AURUM','1 año completo']],
     img:'https://i.ibb.co/Gf1VX5hJ/Screenshot-20260308-022316-Google.jpg',
@@ -523,23 +524,23 @@ const products = [
   },
   { id:21, category:'Libros', badge:'Bestseller', name:'Atomic Habits', subtitle:'James Clear — Edición Especial', price:24, currency:'€',
     desc:'El libro más vendido sobre hábitos. Más de 15 millones de copias.',
-    narrative:'James Clear ha destilado décadas de investigación en un sistema práctico para construir buenos hábitos y eliminar los malos. Un manual de instrucciones para mejorar el 1% cada día.',
+    narrative:'James Clear ha destilado décadas de investigación en un sistema práctico para construir buenos hábitos y eliminar los malos.',
     limited:null,
     specs:[['Autor','James Clear'],['Páginas','319'],['Idioma','Español'],['Editorial','Planeta'],['ISBN','978-8408209980'],['Formato','Tapa dura'],['Edición','Edición especial 2024']],
-    img:'https://i.ibb.co/TBCg3Pd1/Screenshot-20260308-022027-Google-2.jpg',
-    imgs:['https://i.ibb.co/TBCg3Pd1/Screenshot-20260308-022027-Google-2.jpg','https://i.ibb.co/TBCg3Pd1/Screenshot-20260308-022027-Google-2.jpg','https://i.ibb.co/TBCg3Pd1/Screenshot-20260308-022027-Google-2.jpg']
+    img:'https://i.ibb.co/1JZ7dhJD/Screenshot-20260308-021843-Wallapop.jpg',
+    imgs:['https://i.ibb.co/1JZ7dhJD/Screenshot-20260308-021843-Wallapop.jpg','https://i.ibb.co/1JZ7dhJD/Screenshot-20260308-021843-Wallapop.jpg','https://i.ibb.co/1JZ7dhJD/Screenshot-20260308-021843-Wallapop.jpg']
   },
   { id:22, category:'Libros', badge:'Clásico', name:'El Arte de la Guerra', subtitle:'Sun Tzu — Edición Lujo', price:35, currency:'€',
     desc:'El tratado estratégico más influyente de todos los tiempos.',
-    narrative:'Escrito hace más de 2.500 años, El Arte de la Guerra sigue siendo el texto de estrategia más leído en el mundo. Esta edición de lujo incluye encuadernación en piel con letras en oro.',
+    narrative:'Escrito hace más de 2.500 años, El Arte de la Guerra sigue siendo el texto de estrategia más leído en el mundo.',
     limited:null,
     specs:[['Autor','Sun Tzu'],['Páginas','260'],['Idioma','Español'],['Editorial','Sirio'],['Encuadernación','Piel con letras en oro'],['Incluye','Comentarios históricos'],['Formato','Gran formato']],
-    img:'https://i.ibb.co/KxDhLzBs/Screenshot-20260308-022450-Chrome.jpg',
-    imgs:['https://i.ibb.co/KxDhLzBs/Screenshot-20260308-022450-Chrome.jpg','https://i.ibb.co/KxDhLzBs/Screenshot-20260308-022450-Chrome.jpg','https://i.ibb.co/KxDhLzBs/Screenshot-20260308-022450-Chrome.jpg']
+    img:'https://i.ibb.co/0j2Hwd6v/Screenshot-20260308-022628-Chrome.jpg',
+    imgs:['https://i.ibb.co/0j2Hwd6v/Screenshot-20260308-022628-Chrome.jpg','https://i.ibb.co/0j2Hwd6v/Screenshot-20260308-022628-Chrome.jpg','https://i.ibb.co/0j2Hwd6v/Screenshot-20260308-022628-Chrome.jpg']
   },
   { id:23, category:'Libros', badge:'Imprescindible', name:'Sapiens', subtitle:'Yuval Noah Harari', price:22, currency:'€',
     desc:'La historia completa de la humanidad en un solo libro.',
-    narrative:'Yuval Noah Harari logró condensar 70.000 años de historia humana en un relato apasionante. Sapiens explora cómo el Homo sapiens pasó de ser un animal sin importancia a dominar el planeta.',
+    narrative:'Yuval Noah Harari logró condensar 70.000 años de historia humana en un relato apasionante que desafía todas nuestras certezas sobre la civilización.',
     limited:null,
     specs:[['Autor','Yuval Noah Harari'],['Páginas','496'],['Idioma','Español'],['Editorial','Debate'],['ISBN','978-8499924212'],['Formato','Tapa blanda premium'],['Edición','25ª edición']],
     img:'https://i.ibb.co/jZHXLw2G/Screenshot-20260308-022827-Google-2.jpg',
@@ -679,4 +680,3 @@ function handleFormSubmit(btn) {
 </script>
 </body>
 </html>
-                                                                                                                                 >
