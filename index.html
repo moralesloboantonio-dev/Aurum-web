@@ -1,1 +1,521 @@
-hola
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AURUM — Lujo y Tecnología</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A96E; --gold-light: #E8D5A3; --gold-dark: #8B6914;
+    --black: #0A0A0A; --dark: #111111; --dark-2: #1A1A1A;
+    --dark-3: #222222; --dark-4: #2A2A2A;
+    --white: #F7F3EE; --white-dim: rgba(247,243,238,0.6);
+    --white-faint: rgba(247,243,238,0.1);
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'Montserrat', sans-serif;
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: var(--font-body); font-weight: 300; overflow-x: hidden; cursor: none; }
+  .cursor { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: transform 0.1s; }
+  .cursor-ring { width: 32px; height: 32px; border: 1px solid rgba(201,169,110,0.5); border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: all 0.15s ease; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 24px 60px; display: flex; align-items: center; justify-content: space-between; background: linear-gradient(to bottom, rgba(10,10,10,0.95) 0%, transparent 100%); backdrop-filter: blur(2px); border-bottom: 1px solid rgba(201,169,110,0.1); transition: all 0.4s ease; }
+  nav.scrolled { background: rgba(10,10,10,0.97); border-bottom-color: rgba(201,169,110,0.2); }
+  .nav-logo { font-family: var(--font-display); font-size: 28px; font-weight: 400; letter-spacing: 0.15em; color: var(--gold); text-decoration: none; cursor: none; }
+  .nav-logo span { font-style: italic; font-weight: 300; }
+  .nav-links { display: flex; gap: 40px; list-style: none; }
+  .nav-links a { font-family: var(--font-body); font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white-dim); text-decoration: none; cursor: none; position: relative; padding-bottom: 4px; transition: color 0.3s; }
+  .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s ease; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-cart { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--white-dim); background: none; border: 1px solid rgba(201,169,110,0.3); padding: 8px 20px; cursor: none; transition: all 0.3s; font-family: var(--font-body); font-weight: 300; }
+  .nav-cart:hover { border-color: var(--gold); color: var(--gold); }
+  .hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; padding: 140px 60px 80px; }
+  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(201,169,110,0.06) 0%, transparent 70%), radial-gradient(ellipse 40% 40% at 20% 80%, rgba(201,169,110,0.04) 0%, transparent 60%), var(--black); }
+  .hero-line { position: absolute; top: 0; left: 50%; width: 1px; height: 100%; background: linear-gradient(to bottom, transparent, rgba(201,169,110,0.15), transparent); }
+  .hero-content { position: relative; z-index: 2; max-width: 700px; }
+  .hero-eyebrow { font-family: var(--font-body); font-size: 11px; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 32px; display: flex; align-items: center; gap: 16px; }
+  .hero-eyebrow::before { content: ''; width: 40px; height: 1px; background: var(--gold); }
+  .hero-title { font-family: var(--font-display); font-size: clamp(64px, 8vw, 120px); font-weight: 300; line-height: 0.9; margin-bottom: 32px; letter-spacing: -0.01em; }
+  .hero-title em { font-style: italic; color: var(--gold); display: block; margin-left: 60px; }
+  .hero-subtitle { font-size: 13px; font-weight: 300; letter-spacing: 0.08em; line-height: 1.9; color: var(--white-dim); max-width: 400px; margin-bottom: 48px; }
+  .hero-cta { display: flex; gap: 20px; flex-wrap: wrap; }
+  .btn-primary { background: var(--gold); color: var(--black); padding: 16px 40px; font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; cursor: none; transition: all 0.3s; font-family: var(--font-body); border: none; display: inline-block; }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-secondary { background: transparent; color: var(--white-dim); padding: 16px 40px; font-size: 11px; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; cursor: none; border: 1px solid rgba(247,243,238,0.2); transition: all 0.3s; font-family: var(--font-body); }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+  .hero-stats { position: absolute; bottom: 60px; right: 60px; display: flex; gap: 50px; }
+  .stat { text-align: center; }
+  .stat-number { font-family: var(--font-display); font-size: 36px; font-weight: 300; color: var(--gold); line-height: 1; }
+  .stat-label { font-size: 9px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white-dim); margin-top: 6px; }
+  .trust-bar { border-top: 1px solid rgba(201,169,110,0.15); border-bottom: 1px solid rgba(201,169,110,0.15); background: var(--dark-2); padding: 20px 0; overflow: hidden; }
+  .trust-track { display: flex; gap: 80px; animation: slide 20s linear infinite; white-space: nowrap; }
+  .trust-item { display: flex; align-items: center; gap: 12px; font-size: 10px; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--white-dim); flex-shrink: 0; }
+  @keyframes slide { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+  .section-header { text-align: center; margin-bottom: 80px; }
+  .section-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 16px; }
+  .section-eyebrow::before, .section-eyebrow::after { content: ''; width: 30px; height: 1px; background: var(--gold); opacity: 0.5; }
+  .section-title { font-family: var(--font-display); font-size: clamp(36px, 5vw, 64px); font-weight: 300; line-height: 1.05; }
+  .section-title em { font-style: italic; color: var(--gold); }
+  .collections { padding: 120px 60px; background: var(--dark); }
+  .collections-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(201,169,110,0.1); }
+  .collection-card { background: var(--dark-2); padding: 50px 30px; text-align: center; cursor: none; transition: background 0.4s; position: relative; overflow: hidden; text-decoration: none; color: inherit; display: block; }
+  .collection-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); transform: scaleX(0); transition: transform 0.4s ease; }
+  .collection-card:hover { background: var(--dark-3); }
+  .collection-card:hover::before { transform: scaleX(1); }
+  .collection-icon { font-size: 32px; margin-bottom: 20px; line-height: 1; }
+  .collection-name { font-family: var(--font-display); font-size: 22px; font-weight: 400; margin-bottom: 6px; }
+  .collection-sub { font-size: 10px; letter-spacing: 0.2em; color: var(--white-dim); text-transform: uppercase; margin-bottom: 20px; }
+  .collection-count { display: inline-block; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,169,110,0.3); padding: 5px 14px; }
+  .featured { padding: 120px 60px; background: var(--black); }
+  .filter-tabs { display: inline-flex; border: 1px solid rgba(201,169,110,0.2); margin-bottom: 60px; position: relative; left: 50%; transform: translateX(-50%); }
+  .filter-tab { padding: 12px 24px; font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white-dim); background: none; border: none; cursor: none; transition: all 0.3s; font-family: var(--font-body); border-right: 1px solid rgba(201,169,110,0.2); }
+  .filter-tab:last-child { border-right: none; }
+  .filter-tab.active, .filter-tab:hover { background: var(--gold); color: var(--black); }
+  .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: rgba(201,169,110,0.08); }
+  .product-card { background: var(--dark); position: relative; overflow: hidden; cursor: none; transition: transform 0.4s ease; }
+  .product-card:hover { transform: translateY(-4px); z-index: 2; }
+  .product-image-wrap { aspect-ratio: 3/4; overflow: hidden; position: relative; background: var(--dark-3); display: flex; align-items: center; justify-content: center; }
+  .product-image-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+  .product-card:hover .product-image-wrap img { transform: scale(1.05); }
+  .product-badge { position: absolute; top: 20px; left: 20px; font-size: 9px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; padding: 5px 12px; background: var(--gold); color: var(--black); }
+  .product-limited { position: absolute; bottom: 20px; right: 20px; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); background: rgba(10,10,10,0.8); padding: 5px 10px; border: 1px solid rgba(201,169,110,0.4); }
+  .product-info { padding: 28px 28px 32px; }
+  .product-category { font-size: 9px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .product-name { font-family: var(--font-display); font-size: 24px; font-weight: 400; line-height: 1.2; margin-bottom: 8px; }
+  .product-desc { font-size: 11px; color: var(--white-dim); line-height: 1.8; margin-bottom: 24px; }
+  .product-footer { display: flex; align-items: center; justify-content: space-between; }
+  .product-price { font-family: var(--font-display); font-size: 28px; font-weight: 300; color: var(--gold); }
+  .product-price span { font-size: 14px; color: var(--white-dim); margin-right: 4px; }
+  .btn-add { background: none; border: 1px solid rgba(201,169,110,0.4); color: var(--gold); font-family: var(--font-body); font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; padding: 10px 20px; cursor: none; transition: all 0.3s; }
+  .btn-add:hover { background: var(--gold); color: var(--black); }
+  .modal-overlay { position: fixed; inset: 0; z-index: 500; background: rgba(10,10,10,0.95); display: none; opacity: 0; overflow-y: auto; }
+  .modal-overlay.active { display: flex; opacity: 1; }
+  .modal-content { width: 100%; max-width: 1100px; margin: auto; padding: 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; position: relative; }
+  .modal-close { position: fixed; top: 30px; right: 40px; background: none; border: 1px solid rgba(201,169,110,0.3); color: var(--gold); font-family: var(--font-body); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; padding: 10px 20px; cursor: none; z-index: 10; transition: all 0.3s; }
+  .modal-close:hover { background: var(--gold); color: var(--black); }
+  .modal-gallery { position: sticky; top: 60px; }
+  .modal-main-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; background: var(--dark-3); margin-bottom: 16px; }
+  .modal-thumbs { display: flex; gap: 8px; }
+  .modal-thumb { width: 80px; aspect-ratio: 1; object-fit: cover; background: var(--dark-3); opacity: 0.5; cursor: none; transition: opacity 0.3s; border: 1px solid transparent; }
+  .modal-thumb.active, .modal-thumb:hover { opacity: 1; border-color: var(--gold); }
+  .modal-info { padding-top: 20px; }
+  .modal-category { font-size: 10px; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+  .modal-name { font-family: var(--font-display); font-size: 48px; font-weight: 300; line-height: 1.05; margin-bottom: 8px; }
+  .modal-subtitle { font-family: var(--font-display); font-style: italic; font-size: 20px; color: var(--white-dim); margin-bottom: 32px; }
+  .modal-price-row { display: flex; align-items: baseline; gap: 16px; margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid rgba(201,169,110,0.1); }
+  .modal-price { font-family: var(--font-display); font-size: 42px; font-weight: 300; color: var(--gold); }
+  .modal-stock { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #6EAD7A; }
+  .modal-narrative { font-size: 13px; line-height: 2; color: var(--white-dim); margin-bottom: 40px; }
+  .modal-specs { margin-bottom: 40px; }
+  .modal-specs-title { font-size: 10px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+  .spec-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(247,243,238,0.05); font-size: 12px; }
+  .spec-label { color: var(--white-dim); letter-spacing: 0.05em; }
+  .spec-value { font-weight: 400; text-align: right; }
+  .modal-cta { display: flex; gap: 12px; }
+  .btn-buy { flex: 1; background: var(--gold); color: var(--black); border: none; padding: 18px 32px; font-family: var(--font-body); font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; cursor: none; transition: all 0.3s; }
+  .btn-buy:hover { background: var(--gold-light); }
+  .btn-wishlist { background: none; border: 1px solid rgba(201,169,110,0.3); color: var(--gold); padding: 18px 20px; font-family: var(--font-body); font-size: 18px; cursor: none; transition: all 0.3s; }
+  .btn-wishlist:hover { border-color: var(--gold); background: rgba(201,169,110,0.1); }
+  .modal-guarantee { margin-top: 24px; padding: 20px; border: 1px solid rgba(201,169,110,0.1); background: rgba(201,169,110,0.03); }
+  .modal-guarantee p { font-size: 11px; color: var(--white-dim); letter-spacing: 0.05em; line-height: 1.7; display: flex; gap: 10px; align-items: flex-start; }
+  .modal-guarantee p + p { margin-top: 8px; }
+  .about { padding: 140px 60px; background: var(--dark); }
+  .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 120px; align-items: center; }
+  .about-img-frame { width: 100%; aspect-ratio: 3/4; background: var(--dark-3); border: 1px solid rgba(201,169,110,0.15); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  .about-img-frame::after { content: ''; position: absolute; inset: 20px; border: 1px solid rgba(201,169,110,0.15); pointer-events: none; }
+  .about-sigil { font-family: var(--font-display); font-size: 200px; font-weight: 300; color: rgba(201,169,110,0.06); letter-spacing: -0.05em; line-height: 1; }
+  .about-badge { position: absolute; bottom: -20px; right: -20px; width: 120px; height: 120px; background: var(--gold); display: flex; align-items: center; justify-content: center; flex-direction: column; }
+  .about-badge-num { font-family: var(--font-display); font-size: 36px; font-weight: 400; color: var(--black); line-height: 1; }
+  .about-badge-text { font-size: 9px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--black); margin-top: 4px; text-align: center; }
+  .about-title { font-family: var(--font-display); font-size: clamp(40px, 4vw, 60px); font-weight: 300; line-height: 1.1; margin-bottom: 32px; }
+  .about-title em { font-style: italic; color: var(--gold); }
+  .about-body { font-size: 13px; line-height: 2; color: var(--white-dim); margin-bottom: 48px; }
+  .about-pillars { display: flex; flex-direction: column; gap: 24px; }
+  .pillar { display: flex; gap: 20px; align-items: flex-start; }
+  .pillar-icon { width: 40px; height: 40px; flex-shrink: 0; border: 1px solid rgba(201,169,110,0.3); display: flex; align-items: center; justify-content: center; font-size: 16px; }
+  .pillar-title { font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .pillar-text { font-size: 12px; color: var(--white-dim); line-height: 1.7; }
+  .contact { padding: 120px 60px; background: var(--black); }
+  .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; }
+  .contact-title { font-family: var(--font-display); font-size: clamp(36px, 4vw, 56px); font-weight: 300; margin-bottom: 24px; }
+  .contact-title em { font-style: italic; color: var(--gold); }
+  .contact-text { font-size: 13px; color: var(--white-dim); line-height: 2; margin-bottom: 48px; }
+  .contact-details { display: flex; flex-direction: column; gap: 24px; }
+  .contact-item { display: flex; gap: 16px; align-items: flex-start; }
+  .contact-icon { color: var(--gold); font-size: 16px; margin-top: 2px; }
+  .contact-label { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+  .contact-value { font-size: 13px; color: var(--white-dim); }
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 8px; }
+  .form-label { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); }
+  .form-input { background: rgba(247,243,238,0.04); border: 1px solid rgba(201,169,110,0.2); color: var(--white); padding: 14px 18px; font-family: var(--font-body); font-size: 13px; font-weight: 300; outline: none; transition: border-color 0.3s; }
+  .form-input:focus { border-color: var(--gold); }
+  .form-input::placeholder { color: rgba(247,243,238,0.2); }
+  textarea.form-input { resize: vertical; min-height: 120px; }
+  .btn-submit { background: var(--gold); color: var(--black); border: none; padding: 16px 40px; font-family: var(--font-body); font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; cursor: none; transition: all 0.3s; margin-top: 8px; align-self: flex-start; }
+  .btn-submit:hover { background: var(--gold-light); }
+  footer { padding: 60px; border-top: 1px solid rgba(201,169,110,0.1); background: var(--dark); display: flex; align-items: center; justify-content: space-between; }
+  .footer-logo { font-family: var(--font-display); font-size: 24px; color: var(--gold); letter-spacing: 0.15em; }
+  .footer-logo em { font-style: italic; }
+  .footer-copy { font-size: 10px; letter-spacing: 0.1em; color: var(--white-dim); }
+  .footer-links { display: flex; gap: 32px; }
+  .footer-links a { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white-dim); text-decoration: none; cursor: none; transition: color 0.3s; }
+  .footer-links a:hover { color: var(--gold); }
+  .cart-sidebar { position: fixed; right: 0; top: 0; bottom: 0; width: 420px; background: var(--dark-2); z-index: 300; transform: translateX(100%); transition: transform 0.4s ease; border-left: 1px solid rgba(201,169,110,0.15); display: flex; flex-direction: column; }
+  .cart-sidebar.open { transform: translateX(0); }
+  .cart-header { padding: 40px 40px 30px; border-bottom: 1px solid rgba(201,169,110,0.1); display: flex; justify-content: space-between; align-items: center; }
+  .cart-title { font-family: var(--font-display); font-size: 28px; font-weight: 300; }
+  .cart-close-btn { background: none; border: none; color: var(--white-dim); font-size: 20px; cursor: none; }
+  .cart-items { flex: 1; overflow-y: auto; padding: 30px 40px; }
+  .cart-empty { text-align: center; padding: 60px 0; font-family: var(--font-display); font-size: 20px; font-style: italic; color: var(--white-dim); }
+  .cart-item { display: flex; gap: 16px; padding: 20px 0; border-bottom: 1px solid rgba(247,243,238,0.05); }
+  .cart-item-img { width: 80px; aspect-ratio: 3/4; object-fit: cover; background: var(--dark-3); flex-shrink: 0; }
+  .cart-item-info { flex: 1; }
+  .cart-item-name { font-size: 14px; font-weight: 400; margin-bottom: 4px; }
+  .cart-item-cat { font-size: 10px; color: var(--gold); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px; }
+  .cart-item-price { font-family: var(--font-display); font-size: 20px; color: var(--gold); }
+  .cart-item-remove { background: none; border: none; color: var(--white-dim); font-size: 18px; cursor: none; align-self: flex-start; }
+  .cart-footer { padding: 30px 40px; border-top: 1px solid rgba(201,169,110,0.1); }
+  .cart-total-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 24px; }
+  .cart-total-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white-dim); }
+  .cart-total-price { font-family: var(--font-display); font-size: 32px; color: var(--gold); }
+  .btn-checkout { width: 100%; background: var(--gold); color: var(--black); border: none; padding: 18px; font-family: var(--font-body); font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; cursor: none; transition: all 0.3s; margin-bottom: 12px; }
+  .btn-checkout:hover { background: var(--gold-light); }
+  .cart-secure { font-size: 10px; color: var(--white-dim); text-align: center; letter-spacing: 0.1em; }
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  @media (max-width: 900px) {
+    nav { padding: 20px 24px; } .nav-links { display: none; }
+    .hero { padding: 120px 24px 60px; } .hero-stats { display: none; }
+    .collections { padding: 80px 24px; } .collections-grid { grid-template-columns: repeat(2, 1fr); }
+    .featured { padding: 80px 24px; } .products-grid { grid-template-columns: 1fr; }
+    .about { padding: 80px 24px; } .about-inner { grid-template-columns: 1fr; gap: 60px; }
+    .contact { padding: 80px 24px; } .contact-inner { grid-template-columns: 1fr; gap: 60px; }
+    footer { padding: 40px 24px; flex-direction: column; gap: 20px; text-align: center; }
+    .modal-content { grid-template-columns: 1fr; gap: 40px; padding: 80px 24px 40px; }
+    .modal-gallery { position: static; } .cart-sidebar { width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<nav id="navbar">
+  <a href="#inicio" class="nav-logo">AURUM <em>Lujo</em></a>
+  <ul class="nav-links">
+    <li><a href="#colecciones">Colecciones</a></li>
+    <li><a href="#productos">Productos</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <button class="nav-cart" id="cartBtn">Carrito (<span id="cartCount">0</span>)</button>
+</nav>
+<section class="hero" id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-line"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Exclusividad & Confianza</p>
+    <h1 class="hero-title">Vive el<em>Lujo Real</em></h1>
+    <p class="hero-subtitle">Tecnología premium, fragancias exclusivas y moda de élite. Productos auténticos con garantía total.</p>
+    <div class="hero-cta">
+      <a href="#productos" class="btn-primary">Explorar Colección</a>
+      <a href="#colecciones" class="btn-secondary">Ver Categorías</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-number">100%</div><div class="stat-label">Auténticos</div></div>
+    <div class="stat"><div class="stat-number">+5K</div><div class="stat-label">Clientes</div></div>
+    <div class="stat"><div class="stat-number">24h</div><div class="stat-label">Envío Express</div></div>
+  </div>
+</section>
+<div class="trust-bar">
+  <div class="trust-track">
+    <div class="trust-item">✦ Productos 100% Auténticos</div>
+    <div class="trust-item">✦ Pago 100% Seguro</div>
+    <div class="trust-item">✦ Envío Express 24h</div>
+    <div class="trust-item">✦ Garantía de 1 Año</div>
+    <div class="trust-item">✦ +5.000 Clientes Satisfechos</div>
+    <div class="trust-item">✦ Productos 100% Auténticos</div>
+    <div class="trust-item">✦ Pago 100% Seguro</div>
+    <div class="trust-item">✦ Envío Express 24h</div>
+    <div class="trust-item">✦ Garantía de 1 Año</div>
+    <div class="trust-item">✦ +5.000 Clientes Satisfechos</div>
+  </div>
+</div>
+<section class="collections" id="colecciones">
+  <div class="section-header reveal">
+    <p class="section-eyebrow">Nuestras Colecciones</p>
+    <h2 class="section-title">Cada producto, <em>una experiencia</em></h2>
+  </div>
+  <div class="collections-grid reveal">
+    <a href="#productos" class="collection-card" onclick="filterProducts('iPhones')"><div class="collection-icon">📱</div><div class="collection-name">Tech Premium</div><div class="collection-sub">iPhones</div><div class="collection-count">12 Modelos</div></a>
+    <a href="#productos" class="collection-card" onclick="filterProducts('AirPods')"><div class="collection-icon">🎧</div><div class="collection-name">Audio de Élite</div><div class="collection-sub">AirPods</div><div class="collection-count">6 Modelos</div></a>
+    <a href="#productos" class="collection-card" onclick="filterProducts('Relojes')"><div class="collection-icon">⌚</div><div class="collection-name">Alta Relojería</div><div class="collection-sub">Relojes</div><div class="collection-count">18 Modelos</div></a>
+    <a href="#productos" class="collection-card" onclick="filterProducts('Perfumes')"><div class="collection-icon">🌸</div><div class="collection-name">Fragancias</div><div class="collection-sub">Perfumes</div><div class="collection-count">24 Fragancias</div></a>
+    <a href="#productos" class="collection-card" onclick="filterProducts('Ropa')"><div class="collection-icon">👔</div><div class="collection-name">Moda</div><div class="collection-sub">Ropa</div><div class="collection-count">30+ Prendas</div></a>
+    <a href="#productos" class="collection-card" onclick="filterProducts('Zapatos')"><div class="collection-icon">👠</div><div class="collection-name">Calzado de Lujo</div><div class="collection-sub">Zapatos</div><div class="collection-count">20+ Modelos</div></a>
+    <a href="#productos" class="collection-card" onclick="filterProducts('Electrónica')"><div class="collection-icon">💻</div><div class="collection-name">Tech & Gadgets</div><div class="collection-sub">Electrónica</div><div class="collection-count">40+ Productos</div></a>
+    <a href="#productos" class="collection-card" onclick="filterProducts('Libros')"><div class="collection-icon">📚</div><div class="collection-name">Conocimiento</div><div class="collection-sub">Libros</div><div class="collection-count">100+ Títulos</div></a>
+  </div>
+</section>
+<section class="featured" id="productos">
+  <div class="section-header reveal">
+    <p class="section-eyebrow">Selección Exclusiva</p>
+    <h2 class="section-title">Los más <em>deseados</em></h2>
+  </div>
+  <div style="text-align:center">
+    <div class="filter-tabs" id="filterTabs">
+      <button class="filter-tab active" onclick="filterProducts('Todos')">Todos</button>
+      <button class="filter-tab" onclick="filterProducts('iPhones')">iPhones</button>
+      <button class="filter-tab" onclick="filterProducts('AirPods')">AirPods</button>
+      <button class="filter-tab" onclick="filterProducts('Relojes')">Relojes</button>
+      <button class="filter-tab" onclick="filterProducts('Perfumes')">Perfumes</button>
+    </div>
+  </div>
+  <div class="products-grid" id="productsGrid"></div>
+</section>
+<section class="about" id="nosotros">
+  <div class="about-inner">
+    <div class="about-visual reveal">
+      <div class="about-img-frame"><div class="about-sigil">A</div></div>
+      <div class="about-badge"><div class="about-badge-num">VIII</div><div class="about-badge-text">Años de<br>Excelencia</div></div>
+    </div>
+    <div class="about-text reveal">
+      <div class="section-eyebrow" style="justify-content:flex-start">Nuestra Historia</div>
+      <h2 class="about-title">Fundados en la <em>obsesión</em> por lo auténtico</h2>
+      <p class="about-body">AURUM nació de una premisa simple: el lujo no debería ser inaccesible. Durante ocho años hemos construido relaciones directas con las marcas más exclusivas del mundo, garantizando que cada producto que llega a tus manos sea exactamente lo que promete.<br><br>No somos un catálogo genérico. Somos curadores de experiencias. Cada pieza es seleccionada, verificada y presentada con el respeto que merece quien invierte en lo mejor.</p>
+      <div class="about-pillars">
+        <div class="pillar"><div class="pillar-icon">🔏</div><div><div class="pillar-title">Autenticidad Certificada</div><div class="pillar-text">Cada producto incluye certificado de autenticidad y pasa por un proceso de verificación de 12 puntos antes del envío.</div></div></div>
+        <div class="pillar"><div class="pillar-icon">🤝</div><div><div class="pillar-title">Relaciones Directas</div><div class="pillar-text">Trabajamos directamente con distribuidores oficiales y marcas, eliminando intermediarios que comprometan la integridad del producto.</div></div></div>
+        <div class="pillar"><div class="pillar-icon">♾️</div><div><div class="pillar-title">Garantía Total</div><div class="pillar-text">Un año de garantía completa en todos los productos tecnológicos. Si algo falla, nos ocupamos nosotros.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="contact" id="contacto">
+  <div class="section-header reveal">
+    <p class="section-eyebrow">Contacto</p>
+    <h2 class="section-title">Estamos <em>aquí</em></h2>
+  </div>
+  <div class="contact-inner">
+    <div class="reveal">
+      <h3 class="contact-title">Hablemos <em>directamente</em></h3>
+      <p class="contact-text">Si buscas un producto específico, tienes dudas sobre autenticidad o necesitas asesoría personalizada, nuestro equipo está disponible para ti.</p>
+      <div class="contact-details">
+        <div class="contact-item"><div class="contact-icon">✉</div><div><div class="contact-label">Email</div><div class="contact-value">hola@aurum.es</div></div></div>
+        <div class="contact-item"><div class="contact-icon">📞</div><div><div class="contact-label">Teléfono</div><div class="contact-value">+34 900 000 000</div></div></div>
+        <div class="contact-item"><div class="contact-icon">📍</div><div><div class="contact-label">Ubicación</div><div class="contact-value">Madrid, España</div></div></div>
+        <div class="contact-item"><div class="contact-icon">🕐</div><div><div class="contact-label">Horario</div><div class="contact-value">Lun–Vie, 9:00 – 19:00</div></div></div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="contact-form">
+        <div class="form-group"><label class="form-label">Nombre</label><input type="text" class="form-input" placeholder="Tu nombre completo"></div>
+        <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" placeholder="tu@email.com"></div>
+        <div class="form-group"><label class="form-label">Asunto</label><input type="text" class="form-input" placeholder="¿En qué podemos ayudarte?"></div>
+        <div class="form-group"><label class="form-label">Mensaje</label><textarea class="form-input" placeholder="Cuéntanos más..."></textarea></div>
+        <button class="btn-submit" onclick="handleFormSubmit(this)">Enviar Mensaje</button>
+      </div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="footer-logo">AURUM <em>Lujo</em></div>
+  <div class="footer-copy">© 2025 AURUM. Todos los derechos reservados.</div>
+  <div class="footer-links"><a href="#colecciones">Colecciones</a><a href="#nosotros">Nosotros</a><a href="#contacto">Contacto</a></div>
+</footer>
+<div class="modal-overlay" id="productModal">
+  <div class="modal-content" id="modalContent"></div>
+  <button class="modal-close" onclick="closeModal()">✕ Cerrar</button>
+</div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header"><h3 class="cart-title">Tu Carrito</h3><button class="cart-close-btn" onclick="toggleCart()">✕</button></div>
+  <div class="cart-items" id="cartItems"><div class="cart-empty">Tu carrito está vacío</div></div>
+  <div class="cart-footer">
+    <div class="cart-total-row"><span class="cart-total-label">Total</span><span class="cart-total-price" id="cartTotal">€0</span></div>
+    <button class="btn-checkout" onclick="checkout()">Proceder al Pago</button>
+    <p class="cart-secure">🔒 Pago seguro con cifrado SSL</p>
+  </div>
+                                          </div>
+<script>
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+  setTimeout(() => { ring.style.left = e.clientX + 'px'; ring.style.top = e.clientY + 'px'; }, 60);
+});
+
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+const products = [
+  { id:1, category:'iPhones', badge:'Más Vendido', name:'iPhone 16 Pro Max', subtitle:'Titanio Natural', price:1199, currency:'€', desc:'El chip A18 Pro redefine lo posible. Cámara de 48 MP con zoom óptico 5×.', narrative:'El iPhone 16 Pro Max no es un teléfono. Es la convergencia de ingeniería aeroespacial y diseño de alta joyería. Su chasis de titanio de grado 5 ofrece una rigidez excepcional con un peso que desafía la física. El chip A18 Pro ejecuta modelos de inteligencia artificial directamente en el dispositivo, convirtiendo cada disparo fotográfico en una obra maestra sin esfuerzo.', limited:'Solo 3 unidades', specs:[['Pantalla','Super Retina XDR 6.9"'],['Procesador','Apple A18 Pro'],['Cámara principal','48 MP Fusión'],['Zoom óptico','5×'],['Almacenamiento','256 GB'],['Material','Titanio Grado 5'],['Garantía AURUM','1 año completo']], img:'https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?w=600&q=80' },
+  { id:2, category:'iPhones', badge:'Nuevo', name:'iPhone 16', subtitle:'Azulado Ultramar', price:899, currency:'€', desc:'Potencia cotidiana con el chip A16 Bionic y nuevo botón de Acción.', narrative:'El iPhone 16 introduce el botón de Acción y la nueva lente macro, redefiniendo la fotografía cotidiana. Su diseño refinado en aluminio de alta calidad lo convierte en el compañero perfecto para quien exige rendimiento sin concesiones estéticas.', limited:null, specs:[['Pantalla','Super Retina XDR 6.1"'],['Procesador','Apple A16 Bionic'],['Cámara principal','48 MP'],['Zoom óptico','2×'],['Almacenamiento','128 GB'],['Material','Aluminio aeroespacial'],['Garantía AURUM','1 año completo']], img:'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=600&q=80' },
+  { id:3, category:'AirPods', badge:'Exclusivo', name:'AirPods Pro 2', subtitle:'MagSafe Edition', price:279, currency:'€', desc:'Cancelación activa de ruido H2. El silencio nunca fue tan sofisticado.', narrative:'Los AirPods Pro de segunda generación con chip H2 ofrecen una cancelación de ruido dos veces más eficaz que su predecesor. El audio adaptativo crea una experiencia personalizada en tiempo real, ajustándose al entorno con una inteligencia que parece casi instintiva.', limited:'Edición Limitada', specs:[['Chip','Apple H2'],['Cancelación de ruido','Activa (ANC)'],['Audio espacial','Sí, dinámico'],['Autonomía','6h + 30h estuche'],['Resistencia','IP54'],['Garantía AURUM','1 año completo']], img:'https://images.unsplash.com/photo-1606741965429-02919b1e3e4a?w=600&q=80' },
+  { id:4, category:'Relojes', badge:'Premium', name:'Rolex Submariner', subtitle:'Acero Oystersteel', price:9850, currency:'€', desc:'El reloj de buceo más icónico de la historia. 300 m de resistencia al agua.', narrative:'Presentado en 1953, el Submariner fue el primer reloj suizo resistente al agua hasta 100 metros. Hoy resiste hasta 300 metros y lleva en su interior el calibre 3235, con 70 horas de reserva de marcha. Poseer un Submariner no es comprar un reloj; es heredar una leyenda.', limited:'Solo 1 unidad', specs:[['Referencia','124060'],['Caja','Oystersteel 41 mm'],['Calibre','Rolex 3235'],['Reserva de marcha','70 horas'],['Resistencia','300 m / 30 bar'],['Cristal','Zafiro antirreflectante'],['Certificación','COSC + Superlativo']], img:'https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=600&q=80' },
+  { id:5, category:'Perfumes', badge:'Bestseller', name:'Bleu de Chanel', subtitle:'Eau de Parfum 100 ml', price:145, currency:'€', desc:'Madera, cítricos y almizcle. La firma olfativa del hombre contemporáneo.', narrative:'Bleu de Chanel es una declaración de independencia. La apertura vibrante de cítricos sicilianos evoluciona hacia un corazón de sándalo, cedro e incienso que se asienta en una base cálida de almizcle blanco. Un perfume que no sigue modas porque define las suyas.', limited:null, specs:[['Familia olfativa','Aromática Maderada'],['Notas de salida','Limón, Pomelo, Menta'],['Notas de corazón','Jengibre, Nuez moscada, Jazmín'],['Notas de fondo','Sándalo, Cedro, Almizcle'],['Concentración','Eau de Parfum'],['Volumen','100 ml'],['Origen','Francia']], img:'https://images.unsplash.com/photo-1541643600914-78b084683702?w=600&q=80' },
+  { id:6, category:'Relojes', badge:'Nuevo', name:'Apple Watch Ultra 2', subtitle:'Titanio & Correa Trail', price:849, currency:'€', desc:'El reloj de aventura definitivo. Titanio aeroespacial y pantalla 2000 nits.', narrative:'El Apple Watch Ultra 2 está construido para quienes no conocen límites. Su caja de titanio resistente a golpes, la pantalla más brillante jamás creada por Apple y la batería de 60 horas lo convierten en el compañero ideal tanto en una sala de reuniones como en la cima del Kilimanjaro.', limited:null, specs:[['Caja','Titanio 49 mm'],['Pantalla','LTPO OLED 2000 nits'],['Chip','Apple S9'],['Autonomía','Hasta 60 horas'],['Resistencia al agua','100 m EN13319'],['GPS','Doble frecuencia L1/L5'],['Garantía AURUM','1 año completo']], img:'https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?w=600&q=80' },
+];
+
+function renderProducts(filter = 'Todos') {
+  const grid = document.getElementById('productsGrid');
+  const filtered = filter === 'Todos' ? products : products.filter(p => p.category === filter);
+  grid.innerHTML = filtered.map(p => `
+    <div class="product-card reveal" onclick="openModal(${p.id})">
+      <div class="product-image-wrap">
+        <img src="${p.img}" alt="${p.name}" loading="lazy">
+        ${p.badge ? `<div class="product-badge">${p.badge}</div>` : ''}
+        ${p.limited ? `<div class="product-limited">${p.limited}</div>` : ''}
+      </div>
+      <div class="product-info">
+        <div class="product-category">${p.category}</div>
+        <div class="product-name">${p.name}</div>
+        <div class="product-desc">${p.desc}</div>
+        <div class="product-footer">
+          <div class="product-price"><span>${p.currency}</span>${p.price.toLocaleString('es-ES')}</div>
+          <button class="btn-add" onclick="event.stopPropagation(); addToCart(${p.id})">+ Añadir</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+  grid.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+}
+
+function filterProducts(cat) {
+  document.querySelectorAll('.filter-tab').forEach(t => {
+    t.classList.toggle('active', t.textContent.trim() === cat || (cat === 'Todos' && t.textContent.trim() === 'Todos'));
+  });
+  renderProducts(cat);
+  document.getElementById('productos').scrollIntoView({ behavior: 'smooth' });
+}
+
+renderProducts();
+
+function openModal(id) {
+  const p = products.find(x => x.id === id);
+  if (!p) return;
+  document.getElementById('modalContent').innerHTML = `
+    <div class="modal-gallery">
+      <img class="modal-main-img" src="${p.img}" alt="${p.name}" id="mainImg">
+      <div class="modal-thumbs">
+        <img class="modal-thumb active" src="${p.img}" onclick="swapImg(this, '${p.img}')">
+        <img class="modal-thumb" src="${p.img}" onclick="swapImg(this, '${p.img}')">
+        <img class="modal-thumb" src="${p.img}" onclick="swapImg(this, '${p.img}')">
+      </div>
+    </div>
+    <div class="modal-info">
+      <div class="modal-category">${p.category}</div>
+      <h2 class="modal-name">${p.name}</h2>
+      <p class="modal-subtitle">${p.subtitle}</p>
+      <div class="modal-price-row">
+        <div class="modal-price">${p.currency}${p.price.toLocaleString('es-ES')}</div>
+        <div class="modal-stock">✓ En Stock</div>
+      </div>
+      <p class="modal-narrative">${p.narrative}</p>
+      <div class="modal-specs">
+        <div class="modal-specs-title">Especificaciones</div>
+        ${p.specs.map(([k,v]) => `<div class="spec-row"><span class="spec-label">${k}</span><span class="spec-value">${v}</span></div>`).join('')}
+      </div>
+      <div class="modal-cta">
+        <button class="btn-buy" onclick="addToCart(${p.id}); closeModal()">Añadir al Carrito</button>
+        <button class="btn-wishlist">♡</button>
+      </div>
+      <div class="modal-guarantee">
+        <p>🔏 <strong>Autenticidad garantizada</strong> — Verificación de 12 puntos incluida con cada compra.</p>
+        <p>📦 <strong>Envío express 24h</strong> — Embalaje premium discreto con número de seguimiento.</p>
+        <p>↩️ <strong>Devoluciones gratuitas 30 días</strong> — Sin preguntas, sin complicaciones.</p>
+      </div>
+    </div>
+  `;
+  document.getElementById('productModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function swapImg(thumb, src) {
+  document.getElementById('mainImg').src = src;
+  document.querySelectorAll('.modal-thumb').forEach(t => t.classList.remove('active'));
+  thumb.classList.add('active');
+}
+
+function closeModal() {
+  document.getElementById('productModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.getElementById('productModal').addEventListener('click', e => {
+  if (e.target === document.getElementById('productModal')) closeModal();
+});
+
+let cart = [];
+
+function addToCart(id) {
+  const p = products.find(x => x.id === id);
+  if (!p) return;
+  const existing = cart.find(c => c.id === id);
+  if (existing) existing.qty++;
+  else cart.push({ ...p, qty: 1 });
+  updateCartUI();
+  toggleCart(true);
+}
+
+function removeFromCart(id) {
+  cart = cart.filter(c => c.id !== id);
+  updateCartUI();
+}
+
+function updateCartUI() {
+  const count = cart.reduce((a, c) => a + c.qty, 0);
+  document.getElementById('cartCount').textContent = count;
+  const total = cart.reduce((a, c) => a + c.price * c.qty, 0);
+  document.getElementById('cartTotal').textContent = '€' + total.toLocaleString('es-ES');
+  const itemsEl = document.getElementById('cartItems');
+  if (cart.length === 0) {
+    itemsEl.innerHTML = '<div class="cart-empty">Tu carrito está vacío</div>';
+  } else {
+    itemsEl.innerHTML = cart.map(c => `
+      <div class="cart-item">
+        <img class="cart-item-img" src="${c.img}" alt="${c.name}">
+        <div class="cart-item-info">
+          <div class="cart-item-name">${c.name}</div>
+          <div class="cart-item-cat">${c.category}</div>
+          <div class="cart-item-price">${c.currency}${c.price.toLocaleString('es-ES')} × ${c.qty}</div>
+        </div>
+        <button class="cart-item-remove" onclick="removeFromCart(${c.id})">✕</button>
+      </div>
+    `).join('');
+  }
+}
+
+function toggleCart(forceOpen) {
+  const sidebar = document.getElementById('cartSidebar');
+  if (forceOpen === true) sidebar.classList.add('open');
+  else sidebar.classList.toggle('open');
+}
+
+document.getElementById('cartBtn').addEventListener('click', () => toggleCart());
+
+function checkout() {
+  if (cart.length === 0) return;
+  alert('Para completar tu compra, configura tu pasarela de pago.\n\nTotal: €' + cart.reduce((a,c) => a + c.price * c.qty, 0).toLocaleString('es-ES'));
+}
+
+function handleFormSubmit(btn) {
+  btn.textContent = '✓ Mensaje Enviado';
+  btn.style.background = '#6EAD7A';
+  setTimeout(() => { btn.textContent = 'Enviar Mensaje'; btn.style.background = ''; }, 3000);
+}
+</script>
+</body>
+</html>
