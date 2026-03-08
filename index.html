@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -15,7 +13,6 @@
     --black: #0A0A0A; --dark: #111111; --dark-2: #1A1A1A;
     --dark-3: #222222; --dark-4: #2A2A2A;
     --white: #F7F3EE; --white-dim: rgba(247,243,238,0.6);
-    --white-faint: rgba(247,243,238,0.1);
     --font-display: 'Cormorant Garamond', serif;
     --font-body: 'Montserrat', sans-serif;
   }
@@ -27,7 +24,7 @@
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 24px 60px; display: flex; align-items: center; justify-content: space-between; background: linear-gradient(to bottom, rgba(10,10,10,0.95) 0%, transparent 100%); backdrop-filter: blur(2px); border-bottom: 1px solid rgba(201,169,110,0.1); transition: all 0.4s ease; }
   nav.scrolled { background: rgba(10,10,10,0.97); border-bottom-color: rgba(201,169,110,0.2); }
   .nav-logo { font-family: var(--font-display); font-size: 28px; font-weight: 400; letter-spacing: 0.15em; color: var(--gold); text-decoration: none; cursor: none; }
-  .nav-logo span { font-style: italic; font-weight: 300; }
+  .nav-logo em { font-style: italic; font-weight: 300; }
   .nav-links { display: flex; gap: 40px; list-style: none; }
   .nav-links a { font-family: var(--font-body); font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white-dim); text-decoration: none; cursor: none; position: relative; padding-bottom: 4px; transition: color 0.3s; }
   .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s ease; }
@@ -73,8 +70,8 @@
   .collection-sub { font-size: 10px; letter-spacing: 0.2em; color: var(--white-dim); text-transform: uppercase; margin-bottom: 20px; }
   .collection-count { display: inline-block; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,169,110,0.3); padding: 5px 14px; }
   .featured { padding: 120px 60px; background: var(--black); }
-  .filter-tabs { display: inline-flex; border: 1px solid rgba(201,169,110,0.2); margin-bottom: 60px; position: relative; left: 50%; transform: translateX(-50%); }
-  .filter-tab { padding: 12px 24px; font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white-dim); background: none; border: none; cursor: none; transition: all 0.3s; font-family: var(--font-body); border-right: 1px solid rgba(201,169,110,0.2); }
+  .filter-tabs { display: inline-flex; border: 1px solid rgba(201,169,110,0.2); margin-bottom: 60px; position: relative; left: 50%; transform: translateX(-50%); flex-wrap: wrap; }
+  .filter-tab { padding: 12px 20px; font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white-dim); background: none; border: none; cursor: none; transition: all 0.3s; font-family: var(--font-body); border-right: 1px solid rgba(201,169,110,0.2); }
   .filter-tab:last-child { border-right: none; }
   .filter-tab.active, .filter-tab:hover { background: var(--gold); color: var(--black); }
   .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: rgba(201,169,110,0.08); }
@@ -200,6 +197,7 @@
     footer { padding: 40px 24px; flex-direction: column; gap: 20px; text-align: center; }
     .modal-content { grid-template-columns: 1fr; gap: 40px; padding: 80px 24px 40px; }
     .modal-gallery { position: static; } .cart-sidebar { width: 100%; }
+    .filter-tabs { left: 0; transform: none; }
   }
 </style>
 </head>
@@ -241,11 +239,13 @@
     <div class="trust-item">✦ Envío Express 24h</div>
     <div class="trust-item">✦ Garantía de 1 Año</div>
     <div class="trust-item">✦ +5.000 Clientes Satisfechos</div>
+    <div class="trust-item">✦ Devoluciones 30 Días</div>
     <div class="trust-item">✦ Productos 100% Auténticos</div>
     <div class="trust-item">✦ Pago 100% Seguro</div>
     <div class="trust-item">✦ Envío Express 24h</div>
     <div class="trust-item">✦ Garantía de 1 Año</div>
     <div class="trust-item">✦ +5.000 Clientes Satisfechos</div>
+    <div class="trust-item">✦ Devoluciones 30 Días</div>
   </div>
 </div>
 <section class="collections" id="colecciones">
@@ -254,14 +254,14 @@
     <h2 class="section-title">Cada producto, <em>una experiencia</em></h2>
   </div>
   <div class="collections-grid reveal">
-    <a href="#productos" class="collection-card" onclick="filterProducts('iPhones')"><div class="collection-icon">📱</div><div class="collection-name">Tech Premium</div><div class="collection-sub">iPhones</div><div class="collection-count">12 Modelos</div></a>
-    <a href="#productos" class="collection-card" onclick="filterProducts('AirPods')"><div class="collection-icon">🎧</div><div class="collection-name">Audio de Élite</div><div class="collection-sub">AirPods</div><div class="collection-count">6 Modelos</div></a>
-    <a href="#productos" class="collection-card" onclick="filterProducts('Relojes')"><div class="collection-icon">⌚</div><div class="collection-name">Alta Relojería</div><div class="collection-sub">Relojes</div><div class="collection-count">18 Modelos</div></a>
-    <a href="#productos" class="collection-card" onclick="filterProducts('Perfumes')"><div class="collection-icon">🌸</div><div class="collection-name">Fragancias</div><div class="collection-sub">Perfumes</div><div class="collection-count">24 Fragancias</div></a>
-    <a href="#productos" class="collection-card" onclick="filterProducts('Ropa')"><div class="collection-icon">👔</div><div class="collection-name">Moda</div><div class="collection-sub">Ropa</div><div class="collection-count">30+ Prendas</div></a>
-    <a href="#productos" class="collection-card" onclick="filterProducts('Zapatos')"><div class="collection-icon">👠</div><div class="collection-name">Calzado de Lujo</div><div class="collection-sub">Zapatos</div><div class="collection-count">20+ Modelos</div></a>
-    <a href="#productos" class="collection-card" onclick="filterProducts('Electrónica')"><div class="collection-icon">💻</div><div class="collection-name">Tech & Gadgets</div><div class="collection-sub">Electrónica</div><div class="collection-count">40+ Productos</div></a>
-    <a href="#productos" class="collection-card" onclick="filterProducts('Libros')"><div class="collection-icon">📚</div><div class="collection-name">Conocimiento</div><div class="collection-sub">Libros</div><div class="collection-count">100+ Títulos</div></a>
+    <a href="#productos" class="collection-card" onclick="filterProducts('iPhones')"><div class="collection-icon">📱</div><div class="collection-name">Tech Premium</div><div class="collection-sub">iPhones</div><div class="collection-count">5 Modelos</div></a>
+    <a href="#productos" class="collection-card" onclick="filterProducts('AirPods')"><div class="collection-icon">🎧</div><div class="collection-name">Audio de Élite</div><div class="collection-sub">AirPods</div><div class="collection-count">4 Modelos</div></a>
+    <a href="#productos" class="collection-card" onclick="filterProducts('Relojes')"><div class="collection-icon">⌚</div><div class="collection-name">Alta Relojería</div><div class="collection-sub">Relojes</div><div class="collection-count">2 Modelos</div></a>
+    <a href="#productos" class="collection-card" onclick="filterProducts('Perfumes')"><div class="collection-icon">🌸</div><div class="collection-name">Fragancias</div><div class="collection-sub">Perfumes</div><div class="collection-count">2 Fragancias</div></a>
+    <a href="#productos" class="collection-card" onclick="filterProducts('Moda')"><div class="collection-icon">👔</div><div class="collection-name">Moda de Lujo</div><div class="collection-sub">Ropa & Zapatos</div><div class="collection-count">5 Prendas</div></a>
+    <a href="#productos" class="collection-card" onclick="filterProducts('Electrónica')"><div class="collection-icon">💻</div><div class="collection-name">Tech & Gadgets</div><div class="collection-sub">Electrónica</div><div class="collection-count">4 Productos</div></a>
+    <a href="#productos" class="collection-card" onclick="filterProducts('Libros')"><div class="collection-icon">📚</div><div class="collection-name">Conocimiento</div><div class="collection-sub">Libros Premium</div><div class="collection-count">3 Títulos</div></a>
+    <a href="#productos" class="collection-card" onclick="filterProducts('Todos')"><div class="collection-icon">✦</div><div class="collection-name">Todo AURUM</div><div class="collection-sub">Colección Completa</div><div class="collection-count">Ver Todo</div></a>
   </div>
 </section>
 <section class="featured" id="productos">
@@ -276,6 +276,9 @@
       <button class="filter-tab" onclick="filterProducts('AirPods')">AirPods</button>
       <button class="filter-tab" onclick="filterProducts('Relojes')">Relojes</button>
       <button class="filter-tab" onclick="filterProducts('Perfumes')">Perfumes</button>
+      <button class="filter-tab" onclick="filterProducts('Moda')">Moda</button>
+      <button class="filter-tab" onclick="filterProducts('Electrónica')">Electrónica</button>
+      <button class="filter-tab" onclick="filterProducts('Libros')">Libros</button>
     </div>
   </div>
   <div class="products-grid" id="productsGrid"></div>
@@ -342,32 +345,206 @@
     <button class="btn-checkout" onclick="checkout()">Proceder al Pago</button>
     <p class="cart-secure">🔒 Pago seguro con cifrado SSL</p>
   </div>
-                                          </div>
-<script>
+  <script>
 const cursor = document.getElementById('cursor');
 const ring = document.getElementById('cursorRing');
 document.addEventListener('mousemove', e => {
-  cursor.style.left = e.clientX + 'px';
-  cursor.style.top = e.clientY + 'px';
+  cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px';
   setTimeout(() => { ring.style.left = e.clientX + 'px'; ring.style.top = e.clientY + 'px'; }, 60);
 });
-
 window.addEventListener('scroll', () => {
   document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
 });
-
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 const products = [
-  { id:1, category:'iPhones', badge:'Más Vendido', name:'iPhone 16 Pro Max', subtitle:'Titanio Natural', price:1199, currency:'€', desc:'El chip A18 Pro redefine lo posible. Cámara de 48 MP con zoom óptico 5×.', narrative:'El iPhone 16 Pro Max no es un teléfono. Es la convergencia de ingeniería aeroespacial y diseño de alta joyería. Su chasis de titanio de grado 5 ofrece una rigidez excepcional con un peso que desafía la física. El chip A18 Pro ejecuta modelos de inteligencia artificial directamente en el dispositivo, convirtiendo cada disparo fotográfico en una obra maestra sin esfuerzo.', limited:'Solo 3 unidades', specs:[['Pantalla','Super Retina XDR 6.9"'],['Procesador','Apple A18 Pro'],['Cámara principal','48 MP Fusión'],['Zoom óptico','5×'],['Almacenamiento','256 GB'],['Material','Titanio Grado 5'],['Garantía AURUM','1 año completo']], img:'https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?w=600&q=80' },
-  { id:2, category:'iPhones', badge:'Nuevo', name:'iPhone 16', subtitle:'Azulado Ultramar', price:899, currency:'€', desc:'Potencia cotidiana con el chip A16 Bionic y nuevo botón de Acción.', narrative:'El iPhone 16 introduce el botón de Acción y la nueva lente macro, redefiniendo la fotografía cotidiana. Su diseño refinado en aluminio de alta calidad lo convierte en el compañero perfecto para quien exige rendimiento sin concesiones estéticas.', limited:null, specs:[['Pantalla','Super Retina XDR 6.1"'],['Procesador','Apple A16 Bionic'],['Cámara principal','48 MP'],['Zoom óptico','2×'],['Almacenamiento','128 GB'],['Material','Aluminio aeroespacial'],['Garantía AURUM','1 año completo']], img:'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=600&q=80' },
-  { id:3, category:'AirPods', badge:'Exclusivo', name:'AirPods Pro 2', subtitle:'MagSafe Edition', price:279, currency:'€', desc:'Cancelación activa de ruido H2. El silencio nunca fue tan sofisticado.', narrative:'Los AirPods Pro de segunda generación con chip H2 ofrecen una cancelación de ruido dos veces más eficaz que su predecesor. El audio adaptativo crea una experiencia personalizada en tiempo real, ajustándose al entorno con una inteligencia que parece casi instintiva.', limited:'Edición Limitada', specs:[['Chip','Apple H2'],['Cancelación de ruido','Activa (ANC)'],['Audio espacial','Sí, dinámico'],['Autonomía','6h + 30h estuche'],['Resistencia','IP54'],['Garantía AURUM','1 año completo']], img:'https://images.unsplash.com/photo-1606741965429-02919b1e3e4a?w=600&q=80' },
-  { id:4, category:'Relojes', badge:'Premium', name:'Rolex Submariner', subtitle:'Acero Oystersteel', price:9850, currency:'€', desc:'El reloj de buceo más icónico de la historia. 300 m de resistencia al agua.', narrative:'Presentado en 1953, el Submariner fue el primer reloj suizo resistente al agua hasta 100 metros. Hoy resiste hasta 300 metros y lleva en su interior el calibre 3235, con 70 horas de reserva de marcha. Poseer un Submariner no es comprar un reloj; es heredar una leyenda.', limited:'Solo 1 unidad', specs:[['Referencia','124060'],['Caja','Oystersteel 41 mm'],['Calibre','Rolex 3235'],['Reserva de marcha','70 horas'],['Resistencia','300 m / 30 bar'],['Cristal','Zafiro antirreflectante'],['Certificación','COSC + Superlativo']], img:'https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=600&q=80' },
-  { id:5, category:'Perfumes', badge:'Bestseller', name:'Bleu de Chanel', subtitle:'Eau de Parfum 100 ml', price:145, currency:'€', desc:'Madera, cítricos y almizcle. La firma olfativa del hombre contemporáneo.', narrative:'Bleu de Chanel es una declaración de independencia. La apertura vibrante de cítricos sicilianos evoluciona hacia un corazón de sándalo, cedro e incienso que se asienta en una base cálida de almizcle blanco. Un perfume que no sigue modas porque define las suyas.', limited:null, specs:[['Familia olfativa','Aromática Maderada'],['Notas de salida','Limón, Pomelo, Menta'],['Notas de corazón','Jengibre, Nuez moscada, Jazmín'],['Notas de fondo','Sándalo, Cedro, Almizcle'],['Concentración','Eau de Parfum'],['Volumen','100 ml'],['Origen','Francia']], img:'https://images.unsplash.com/photo-1541643600914-78b084683702?w=600&q=80' },
-  { id:6, category:'Relojes', badge:'Nuevo', name:'Apple Watch Ultra 2', subtitle:'Titanio & Correa Trail', price:849, currency:'€', desc:'El reloj de aventura definitivo. Titanio aeroespacial y pantalla 2000 nits.', narrative:'El Apple Watch Ultra 2 está construido para quienes no conocen límites. Su caja de titanio resistente a golpes, la pantalla más brillante jamás creada por Apple y la batería de 60 horas lo convierten en el compañero ideal tanto en una sala de reuniones como en la cima del Kilimanjaro.', limited:null, specs:[['Caja','Titanio 49 mm'],['Pantalla','LTPO OLED 2000 nits'],['Chip','Apple S9'],['Autonomía','Hasta 60 horas'],['Resistencia al agua','100 m EN13319'],['GPS','Doble frecuencia L1/L5'],['Garantía AURUM','1 año completo']], img:'https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?w=600&q=80' },
+  { id:1, category:'iPhones', badge:'Más Vendido', name:'iPhone 16 Pro Max', subtitle:'Titanio Oro Rosa', price:1199, currency:'€',
+    desc:'El chip A18 Pro redefine lo posible. Cámara de 48 MP con zoom óptico 5×.',
+    narrative:'El iPhone 16 Pro Max no es un teléfono. Es la convergencia de ingeniería aeroespacial y diseño de alta joyería. Su chasis de titanio de grado 5 en acabado oro rosa ofrece una rigidez excepcional. El chip A18 Pro ejecuta modelos de inteligencia artificial directamente en el dispositivo, convirtiendo cada disparo fotográfico en una obra maestra.',
+    limited:'Solo 3 unidades',
+    specs:[['Pantalla','Super Retina XDR 6.9"'],['Procesador','Apple A18 Pro'],['Cámara principal','48 MP Fusión'],['Zoom óptico','5×'],['Almacenamiento','256 GB'],['Color','Titanio Oro Rosa'],['Garantía AURUM','1 año completo']],
+    img:'https://i.ibb.co/G4NtjR5m/Screenshot-20260308-012629-Wallapop-2.jpg',
+    imgs:['https://i.ibb.co/G4NtjR5m/Screenshot-20260308-012629-Wallapop-2.jpg','https://i.ibb.co/WpNkBRYf/Screenshot-20260308-012623-Wallapop.jpg','https://i.ibb.co/Zp95hJrj/Screenshot-20260308-012618-Wallapop.jpg','https://i.ibb.co/1YwwdxK6/Screenshot-20260308-012612-Wallapop.jpg']
+  },
+  { id:2, category:'iPhones', badge:'Nuevo', name:'iPhone 16 Pro Max', subtitle:'Titanio — Vista lateral', price:1199, currency:'€',
+    desc:'Diseño en titanio con puerto USB-C de alta velocidad.',
+    narrative:'Cada detalle del iPhone 16 Pro Max ha sido cuidadosamente diseñado. El puerto USB-C compatible con USB 3 permite transferencias de datos a velocidades sin precedentes, y el botón de Acción personalizable añade una dimensión completamente nueva a la experiencia.',
+    limited:null,
+    specs:[['Puerto','USB-C (USB 3)'],['Botón Acción','Personalizable'],['Cámara frontal','12 MP TrueDepth'],['5G','Compatible'],['FaceID','Sí'],['Color','Titanio Oro Rosa'],['Garantía AURUM','1 año completo']],
+    img:'https://i.ibb.co/20bLqMYM/Screenshot-20260308-013458-Wallapop.jpg',
+    imgs:['https://i.ibb.co/20bLqMYM/Screenshot-20260308-013458-Wallapop.jpg','https://i.ibb.co/G4NtjR5m/Screenshot-20260308-012629-Wallapop-2.jpg','https://i.ibb.co/WpNkBRYf/Screenshot-20260308-012623-Wallapop.jpg']
+  },
+  { id:3, category:'iPhones', badge:'Oferta', name:'iPhone 16', subtitle:'Nuevo Diseño 2024', price:899, currency:'€',
+    desc:'Potencia cotidiana con chip A16 Bionic y botón de Acción.',
+    narrative:'El iPhone 16 representa la evolución perfecta para quien quiere lo mejor sin compromisos. Con el nuevo botón de Acción y la lente macro mejorada, cada momento se convierte en una oportunidad creativa.',
+    limited:null,
+    specs:[['Pantalla','Super Retina XDR 6.1"'],['Procesador','Apple A16 Bionic'],['Cámara principal','48 MP'],['Zoom óptico','2×'],['Almacenamiento','128 GB'],['Material','Aluminio aeroespacial'],['Garantía AURUM','1 año completo']],
+    img:'https://i.ibb.co/N2636233/Screenshot-20260308-013449-Wallapop.jpg',
+    imgs:['https://i.ibb.co/N2636233/Screenshot-20260308-013449-Wallapop.jpg','https://i.ibb.co/N63FstWm/Screenshot-20260308-014125-Wallapop.jpg','https://i.ibb.co/N2636233/Screenshot-20260308-013449-Wallapop.jpg']
+  },
+  { id:4, category:'iPhones', badge:'Premium', name:'iPhone 15 Pro Max', subtitle:'Titanio Natural', price:999, currency:'€',
+    desc:'El primer iPhone con titanio. Chip A17 Pro y cámara periscópica.',
+    narrative:'El iPhone 15 Pro Max introdujo el titanio en la familia iPhone, marcando un antes y un después en el diseño de smartphones. Su sistema de cámara con zoom periscópico 5× ofreció capacidades fotográficas reservadas hasta entonces a cámaras de alta gama.',
+    limited:'Últimas unidades',
+    specs:[['Pantalla','Super Retina XDR 6.7"'],['Procesador','Apple A17 Pro'],['Zoom óptico','5× Periscópico'],['Almacenamiento','256 GB'],['Material','Titanio Grado 5'],['Puerto','USB-C'],['Garantía AURUM','1 año completo']],
+    img:'https://i.ibb.co/PGtnyY3g/Screenshot-20260308-014122-Wallapop.jpg',
+    imgs:['https://i.ibb.co/PGtnyY3g/Screenshot-20260308-014122-Wallapop.jpg','https://i.ibb.co/gMN16Xrw/Screenshot-20260308-014615-Wallapop.jpg','https://i.ibb.co/PGtnyY3g/Screenshot-20260308-014122-Wallapop.jpg']
+  },
+  { id:5, category:'AirPods', badge:'Exclusivo', name:'AirPods Pro Max', subtitle:'Cancelación Total de Ruido', price:549, currency:'€',
+    desc:'Cancelación activa de ruido premium. Audio de nivel estudio.',
+    narrative:'Los AirPods Max representan la cima del audio personal de Apple. Sus almohadillas de malla transpirable y la diadema de malla de acero inoxidable ofrecen una comodidad inigualable. La cancelación activa de ruido crea una burbuja de silencio absoluto en cualquier entorno.',
+    limited:'Edición Limitada',
+    specs:[['Chip','Apple H1 (por oído)'],['Cancelación de ruido','Activa Premium'],['Audio espacial','Sí, dinámico'],['Autonomía','20h con ANC'],['Resistencia','IPX4'],['Material','Aluminio anodizado'],['Garantía AURUM','1 año completo']],
+    img:'https://i.ibb.co/B5w8GrDW/Screenshot-20260308-013502-Wallapop.jpg',
+    imgs:['https://i.ibb.co/B5w8GrDW/Screenshot-20260308-013502-Wallapop.jpg','https://i.ibb.co/Df7BKXhs/Screenshot-20260308-012605-Wallapop.jpg','https://i.ibb.co/k2nsCmSC/Screenshot-20260308-012602-Wallapop.jpg']
+  },
+  { id:6, category:'AirPods', badge:'Nuevo', name:'AirPods Pro 2', subtitle:'Chip H2 — MagSafe', price:279, currency:'€',
+    desc:'Cancelación de ruido H2. Dos veces más eficaz que la generación anterior.',
+    narrative:'Los AirPods Pro de segunda generación con chip H2 ofrecen una cancelación de ruido radicalmente mejorada. El audio adaptativo ajusta en tiempo real el nivel de inmersión según tu entorno.',
+    limited:null,
+    specs:[['Chip','Apple H2'],['Cancelación de ruido','Activa (ANC)'],['Audio espacial','Sí, dinámico'],['Autonomía','6h + 30h estuche'],['Resistencia','IP54'],['Carga','MagSafe / Lightning'],['Garantía AURUM','1 año completo']],
+    img:'https://i.ibb.co/mrZxGN55/Screenshot-20260308-013452-Wallapop.jpg',
+    imgs:['https://i.ibb.co/mrZxGN55/Screenshot-20260308-013452-Wallapop.jpg','https://i.ibb.co/B5w8GrDW/Screenshot-20260308-013502-Wallapop.jpg','https://i.ibb.co/Df7BKXhs/Screenshot-20260308-012605-Wallapop.jpg']
+  },
+  { id:7, category:'AirPods', badge:'Nuevo 2024', name:'AirPods 4', subtitle:'Diseño Rediseñado', price:149, currency:'€',
+    desc:'Nuevo diseño ergonómico. Cancelación activa de ruido en formato abierto.',
+    narrative:'Los AirPods 4 representan una revolución en diseño. Por primera vez, la cancelación activa de ruido llega a un auricular de formato abierto, sin almohadillas de silicona.',
+    limited:null,
+    specs:[['Chip','Apple H2'],['Tipo','In-ear sin silicona'],['Cancelación de ruido','Activa (ANC)'],['Autonomía','5h + 25h estuche'],['Resistencia','IP54'],['Carga','USB-C'],['Garantía AURUM','1 año completo']],
+    img:'https://i.ibb.co/KxzZx1FK/Screenshot-20260308-014558-Wallapop.jpg',
+    imgs:['https://i.ibb.co/KxzZx1FK/Screenshot-20260308-014558-Wallapop.jpg','https://i.ibb.co/mrZxGN55/Screenshot-20260308-013452-Wallapop.jpg','https://i.ibb.co/KxzZx1FK/Screenshot-20260308-014558-Wallapop.jpg']
+  },
+  { id:8, category:'Relojes', badge:'Premium', name:'Apple Watch Ultra 2', subtitle:'Titanio Aeroespacial', price:849, currency:'€',
+    desc:'El reloj de aventura definitivo. Pantalla 2000 nits y 60h de batería.',
+    narrative:'El Apple Watch Ultra 2 está construido para quienes no conocen límites. Su caja de titanio resistente a golpes, la pantalla más brillante jamás creada por Apple y la batería de 60 horas lo convierten en el compañero ideal.',
+    limited:null,
+    specs:[['Caja','Titanio 49 mm'],['Pantalla','LTPO OLED 2000 nits'],['Chip','Apple S9'],['Autonomía','Hasta 60 horas'],['Resistencia al agua','100 m EN13319'],['GPS','Doble frecuencia L1/L5'],['Garantía AURUM','1 año completo']],
+    img:'https://i.ibb.co/jZ8GRZgd/Screenshot-20260308-015005-Wallapop.jpg',
+    imgs:['https://i.ibb.co/jZ8GRZgd/Screenshot-20260308-015005-Wallapop.jpg','https://i.ibb.co/jZ8GRZgd/Screenshot-20260308-015005-Wallapop.jpg','https://i.ibb.co/jZ8GRZgd/Screenshot-20260308-015005-Wallapop.jpg']
+  },
+  { id:9, category:'Relojes', badge:'Icónico', name:'Rolex Submariner', subtitle:'Acero Oystersteel', price:9850, currency:'€',
+    desc:'El reloj de buceo más icónico. 300 m de resistencia al agua.',
+    narrative:'Presentado en 1953, el Submariner fue el primer reloj suizo resistente al agua hasta 100 metros. Poseer un Submariner no es comprar un reloj; es heredar una leyenda.',
+    limited:'Solo 1 unidad',
+    specs:[['Referencia','124060'],['Caja','Oystersteel 41 mm'],['Calibre','Rolex 3235'],['Reserva de marcha','70 horas'],['Resistencia','300 m / 30 bar'],['Cristal','Zafiro antirreflectante'],['Certificación','COSC + Superlativo']],
+    img:'https://i.ibb.co/S4f8hrsC/Screenshot-20260308-015203-Wallapop.jpg',
+    imgs:['https://i.ibb.co/S4f8hrsC/Screenshot-20260308-015203-Wallapop.jpg','https://i.ibb.co/S4f8hrsC/Screenshot-20260308-015203-Wallapop.jpg','https://i.ibb.co/S4f8hrsC/Screenshot-20260308-015203-Wallapop.jpg']
+  },
+  { id:10, category:'Perfumes', badge:'Bestseller', name:'Dior Sauvage', subtitle:'Eau de Parfum 100 ml', price:129, currency:'€',
+    desc:'La fragancia más vendida del mundo. Fresco, amaderado e intenso.',
+    narrative:'Dior Sauvage es una fuerza de la naturaleza embotellada. Su composición de bergamota de Calabria y ambroxán crea una estela magnética que permanece horas después.',
+    limited:null,
+    specs:[['Familia olfativa','Aromática Fresca'],['Notas de salida','Bergamota, Pimienta'],['Notas de corazón','Lavanda, Geranio'],['Notas de fondo','Ambroxán, Cedro, Vetiver'],['Concentración','Eau de Parfum'],['Volumen','100 ml'],['Origen','Francia']],
+    img:'https://i.ibb.co/LdP72wNr/Screenshot-20260308-015429-Chrome.jpg',
+    imgs:['https://i.ibb.co/LdP72wNr/Screenshot-20260308-015429-Chrome.jpg','https://i.ibb.co/LdP72wNr/Screenshot-20260308-015429-Chrome.jpg','https://i.ibb.co/LdP72wNr/Screenshot-20260308-015429-Chrome.jpg']
+  },
+  { id:11, category:'Perfumes', badge:'Lujo', name:'Chanel Nº5', subtitle:'Eau de Parfum 100 ml', price:165, currency:'€',
+    desc:'El perfume más famoso del mundo. Elegancia atemporal.',
+    narrative:'Chanel Nº5 es más que un perfume: es un símbolo cultural. Creado en 1921, su bouquet floral aldehído revolucionó el mundo de la perfumería. Más de un siglo después, sigue siendo el epítome de la elegancia francesa.',
+    limited:null,
+    specs:[['Familia olfativa','Floral Aldehído'],['Notas de salida','Aldehídos, Neroli, Bergamota'],['Notas de corazón','Rosa, Jazmín, Ylang-ylang'],['Notas de fondo','Sándalo, Vainilla, Almizcle'],['Concentración','Eau de Parfum'],['Volumen','100 ml'],['Origen','Francia']],
+    img:'https://i.ibb.co/fzSqpxzR/Screenshot-20260308-015803-Google.jpg',
+    imgs:['https://i.ibb.co/fzSqpxzR/Screenshot-20260308-015803-Google.jpg','https://i.ibb.co/fzSqpxzR/Screenshot-20260308-015803-Google.jpg','https://i.ibb.co/fzSqpxzR/Screenshot-20260308-015803-Google.jpg']
+  },
+  { id:12, category:'Moda', badge:'Exclusivo', name:'Camisa Armani Premium', subtitle:'Algodón Egipcio', price:320, currency:'€',
+    desc:'Confeccionada en algodón egipcio de 200 hilos. Corte italiano perfecto.',
+    narrative:'Giorgio Armani elevó la camisa de hombre a obra de arte. Esta pieza de la colección premium está confeccionada en algodón egipcio de fibra larga, con un tejido de 200 hilos.',
+    limited:null,
+    specs:[['Material','Algodón egipcio 200 hilos'],['Corte','Slim fit italiano'],['Botones','Nácar auténtico'],['Cuello','Italiano clásico'],['Tallas','S, M, L, XL'],['Cuidado','Tintorería recomendada'],['Origen','Milán, Italia']],
+    img:'https://i.ibb.co/84Kx1TZ7/Screenshot-20260308-020107-Google.jpg',
+    imgs:['https://i.ibb.co/84Kx1TZ7/Screenshot-20260308-020107-Google.jpg','https://i.ibb.co/84Kx1TZ7/Screenshot-20260308-020107-Google.jpg','https://i.ibb.co/84Kx1TZ7/Screenshot-20260308-020107-Google.jpg']
+  },
+  { id:13, category:'Moda', badge:'Hype', name:'Sneakers Balenciaga', subtitle:'Triple S — Edición Especial', price:895, currency:'€',
+    desc:'Las sneakers más icónicas del streetwear de lujo. Triple suela.',
+    narrative:'Las Balenciaga Triple S redefinieron el concepto de calzado de lujo. Su triple suela de construcción compleja crea una silueta imponente que ha influenciado toda una generación de diseñadores.',
+    limited:'Edición Limitada',
+    specs:[['Marca','Balenciaga'],['Modelo','Triple S'],['Material superior','Malla técnica + cuero'],['Suela','Triple EVA/goma'],['Tallas','38-46'],['Caja original','Incluida'],['Autenticidad','Certificada']],
+    img:'https://i.ibb.co/9kJS34fx/Screenshot-20260308-020317-Google.jpg',
+    imgs:['https://i.ibb.co/9kJS34fx/Screenshot-20260308-020317-Google.jpg','https://i.ibb.co/9kJS34fx/Screenshot-20260308-020317-Google.jpg','https://i.ibb.co/9kJS34fx/Screenshot-20260308-020317-Google.jpg']
+  },
+  { id:14, category:'Moda', badge:'Lujo', name:'Blazer Zegna', subtitle:'Lana Merino Italiana', price:1450, currency:'€',
+    desc:'Sastrería italiana de la más alta tradición. Lana merino 130s.',
+    narrative:'Ermenegildo Zegna es sinónimo de la sastrería italiana más refinada. Este blazer de lana merino 130s ultrafina representa décadas de maestría artesanal.',
+    limited:null,
+    specs:[['Marca','Ermenegildo Zegna'],['Material','Lana merino 130s'],['Forro','Seda'],['Botones','Cuerno natural'],['Confección','Sastre a mano'],['Tallas','46-56 IT'],['Origen','Trivero, Italia']],
+    img:'https://i.ibb.co/WNp7VCrc/Screenshot-20260308-020459-Google.jpg',
+    imgs:['https://i.ibb.co/WNp7VCrc/Screenshot-20260308-020459-Google.jpg','https://i.ibb.co/WNp7VCrc/Screenshot-20260308-020459-Google.jpg','https://i.ibb.co/WNp7VCrc/Screenshot-20260308-020459-Google.jpg']
+  },
+  { id:15, category:'Moda', badge:'Icónico', name:'Air Jordan 1 Retro', subtitle:'High OG — Chicago', price:380, currency:'€',
+    desc:'El sneaker más histórico de todos los tiempos. Colorway original Chicago.',
+    narrative:'El Air Jordan 1, diseñado en 1985, no es solo un zapato: es el inicio de una revolución cultural. El colorway Chicago fue el que calzó Michael Jordan en su primera temporada NBA.',
+    limited:'Solo 2 pares',
+    specs:[['Modelo','Air Jordan 1 Retro High OG'],['Colorway','Chicago (Black/Red/White)'],['Suela','Air-Sole'],['Material','Cuero genuino'],['Altura','High-top'],['Tallas','40-47 EU'],['Autenticidad','Certificada Nike']],
+    img:'https://i.ibb.co/svg3qjnq/Screenshot-20260308-020747-Google-2.jpg',
+    imgs:['https://i.ibb.co/svg3qjnq/Screenshot-20260308-020747-Google-2.jpg','https://i.ibb.co/svg3qjnq/Screenshot-20260308-020747-Google-2.jpg','https://i.ibb.co/svg3qjnq/Screenshot-20260308-020747-Google-2.jpg']
+  },
+  { id:16, category:'Moda', badge:'Premium', name:'Zapatos Gucci', subtitle:'Leather Loafer — Horsebit', price:720, currency:'€',
+    desc:'El mocasín más reconocible del mundo. Detalle Horsebit dorado.',
+    narrative:'El mocasín Horsebit de Gucci nació en 1953 y se ha convertido en uno de los iconos de la moda masculina más duraderos. El detalle metálico dorado es inmediatamente reconocible.',
+    limited:null,
+    specs:[['Marca','Gucci'],['Modelo','Horsebit Loafer'],['Material','Cuero de becerro'],['Suela','Cuero cosido'],['Detalle','Horsebit dorado'],['Tallas','39-46 EU'],['Origen','Florencia, Italia']],
+    img:'https://i.ibb.co/PGtP4Shh/Screenshot-20260308-021353-Google.jpg',
+    imgs:['https://i.ibb.co/PGtP4Shh/Screenshot-20260308-021353-Google.jpg','https://i.ibb.co/PGtP4Shh/Screenshot-20260308-021353-Google.jpg','https://i.ibb.co/PGtP4Shh/Screenshot-20260308-021353-Google.jpg']
+  },
+  { id:17, category:'Electrónica', badge:'Potencia', name:'MacBook Pro M4', subtitle:'Chip M4 Pro — 14"', price:2199, currency:'€',
+    desc:'El laptop más potente jamás creado. Chip M4 Pro con NPU de 38 TOPS.',
+    narrative:'El MacBook Pro con chip M4 Pro redefine lo que es posible en un portátil. Rendimiento sostenido sin calentamiento, pantalla Liquid Retina XDR y hasta 22 horas de batería.',
+    limited:null,
+    specs:[['Chip','Apple M4 Pro'],['RAM','24 GB unificada'],['Almacenamiento','512 GB SSD'],['Pantalla','14.2" Liquid Retina XDR'],['Batería','Hasta 22 horas'],['Puertos','3× Thunderbolt 4, HDMI, SD'],['Garantía AURUM','1 año completo']],
+    img:'https://i.ibb.co/GvCWXLxj/Screenshot-20260308-021647-Wallapop-2.jpg',
+    imgs:['https://i.ibb.co/GvCWXLxj/Screenshot-20260308-021647-Wallapop-2.jpg','https://i.ibb.co/GvCWXLxj/Screenshot-20260308-021647-Wallapop-2.jpg','https://i.ibb.co/GvCWXLxj/Screenshot-20260308-021647-Wallapop-2.jpg']
+  },
+  { id:18, category:'Electrónica', badge:'Gaming', name:'PS5 Slim', subtitle:'PlayStation 5 — Digital Edition', price:449, currency:'€',
+    desc:'La consola más rápida de Sony. 30% más ligera que el modelo original.',
+    narrative:'La PS5 Slim mantiene toda la potencia de la PlayStation 5 original en un formato más compacto. Su SSD ultrarrápido elimina los tiempos de carga prácticamente por completo.',
+    limited:'Pocas unidades',
+    specs:[['CPU','AMD Zen 2 8 núcleos 3.5GHz'],['GPU','AMD RDNA 2 10.3 TFLOPS'],['RAM','16 GB GDDR6'],['Almacenamiento','825 GB SSD NVMe'],['Resolución','4K / 120fps'],['Ray Tracing','Sí'],['Garantía AURUM','1 año completo']],
+    img:'https://i.ibb.co/TBBQBCps/Screenshot-20260308-021215-Google.jpg',
+    imgs:['https://i.ibb.co/TBBQBCps/Screenshot-20260308-021215-Google.jpg','https://i.ibb.co/TBBQBCps/Screenshot-20260308-021215-Google.jpg','https://i.ibb.co/TBBQBCps/Screenshot-20260308-021215-Google.jpg']
+  },
+  { id:19, category:'Electrónica', badge:'Audio', name:'Sony WH-1000XM5', subtitle:'Cancelación de Ruido Premium', price:349, currency:'€',
+    desc:'Los mejores auriculares con cancelación de ruido del mercado.',
+    narrative:'Los Sony WH-1000XM5 representan la cima de la ingeniería de audio portátil. Con 8 micrófonos y dos procesadores dedicados, la cancelación de ruido es la mejor del mercado.',
+    limited:null,
+    specs:[['Controlador','30 mm dinámico'],['Cancelación de ruido','8 micrófonos + 2 procesadores'],['Autonomía','30h con ANC'],['Audio','LDAC / HiRes'],['Codec','LDAC, aptX, AAC, SBC'],['Plegable','Sí'],['Garantía AURUM','1 año completo']],
+    img:'https://i.ibb.co/1JZ7dhJD/Screenshot-20260308-021843-Wallapop.jpg',
+    imgs:['https://i.ibb.co/1JZ7dhJD/Screenshot-20260308-021843-Wallapop.jpg','https://i.ibb.co/1JZ7dhJD/Screenshot-20260308-021843-Wallapop.jpg','https://i.ibb.co/1JZ7dhJD/Screenshot-20260308-021843-Wallapop.jpg']
+  },
+  { id:20, category:'Electrónica', badge:'TV 4K', name:'LG OLED 65" 4K', subtitle:'OLED evo — 120Hz', price:1799, currency:'€',
+    desc:'Negros perfectos e infinito contraste. La mejor televisión del mundo.',
+    narrative:'La tecnología OLED de LG ofrece lo que ningún otro panel puede: negros perfectos y absolutos. Cada píxel genera su propia luz y puede apagarse completamente.',
+    limited:null,
+    specs:[['Panel','OLED evo α9 Gen7'],['Resolución','4K UHD (3840×2160)'],['Tasa de refresco','120Hz nativo'],['HDR','Dolby Vision, HDR10, HLG'],['Audio','Dolby Atmos 2.2ch 40W'],['Smart TV','webOS 24'],['Garantía AURUM','1 año completo']],
+    img:'https://i.ibb.co/Gf1VX5hJ/Screenshot-20260308-022316-Google.jpg',
+    imgs:['https://i.ibb.co/Gf1VX5hJ/Screenshot-20260308-022316-Google.jpg','https://i.ibb.co/Gf1VX5hJ/Screenshot-20260308-022316-Google.jpg','https://i.ibb.co/Gf1VX5hJ/Screenshot-20260308-022316-Google.jpg']
+  },
+  { id:21, category:'Libros', badge:'Bestseller', name:'Atomic Habits', subtitle:'James Clear — Edición Especial', price:24, currency:'€',
+    desc:'El libro más vendido sobre hábitos. Más de 15 millones de copias.',
+    narrative:'James Clear ha destilado décadas de investigación en un sistema práctico para construir buenos hábitos y eliminar los malos. Un manual de instrucciones para mejorar el 1% cada día.',
+    limited:null,
+    specs:[['Autor','James Clear'],['Páginas','319'],['Idioma','Español'],['Editorial','Planeta'],['ISBN','978-8408209980'],['Formato','Tapa dura'],['Edición','Edición especial 2024']],
+    img:'https://i.ibb.co/TBCg3Pd1/Screenshot-20260308-022027-Google-2.jpg',
+    imgs:['https://i.ibb.co/TBCg3Pd1/Screenshot-20260308-022027-Google-2.jpg','https://i.ibb.co/TBCg3Pd1/Screenshot-20260308-022027-Google-2.jpg','https://i.ibb.co/TBCg3Pd1/Screenshot-20260308-022027-Google-2.jpg']
+  },
+  { id:22, category:'Libros', badge:'Clásico', name:'El Arte de la Guerra', subtitle:'Sun Tzu — Edición Lujo', price:35, currency:'€',
+    desc:'El tratado estratégico más influyente de todos los tiempos.',
+    narrative:'Escrito hace más de 2.500 años, El Arte de la Guerra sigue siendo el texto de estrategia más leído en el mundo. Esta edición de lujo incluye encuadernación en piel con letras en oro.',
+    limited:null,
+    specs:[['Autor','Sun Tzu'],['Páginas','260'],['Idioma','Español'],['Editorial','Sirio'],['Encuadernación','Piel con letras en oro'],['Incluye','Comentarios históricos'],['Formato','Gran formato']],
+    img:'https://i.ibb.co/KxDhLzBs/Screenshot-20260308-022450-Chrome.jpg',
+    imgs:['https://i.ibb.co/KxDhLzBs/Screenshot-20260308-022450-Chrome.jpg','https://i.ibb.co/KxDhLzBs/Screenshot-20260308-022450-Chrome.jpg','https://i.ibb.co/KxDhLzBs/Screenshot-20260308-022450-Chrome.jpg']
+  },
+  { id:23, category:'Libros', badge:'Imprescindible', name:'Sapiens', subtitle:'Yuval Noah Harari', price:22, currency:'€',
+    desc:'La historia completa de la humanidad en un solo libro.',
+    narrative:'Yuval Noah Harari logró condensar 70.000 años de historia humana en un relato apasionante. Sapiens explora cómo el Homo sapiens pasó de ser un animal sin importancia a dominar el planeta.',
+    limited:null,
+    specs:[['Autor','Yuval Noah Harari'],['Páginas','496'],['Idioma','Español'],['Editorial','Debate'],['ISBN','978-8499924212'],['Formato','Tapa blanda premium'],['Edición','25ª edición']],
+    img:'https://i.ibb.co/jZHXLw2G/Screenshot-20260308-022827-Google-2.jpg',
+    imgs:['https://i.ibb.co/jZHXLw2G/Screenshot-20260308-022827-Google-2.jpg','https://i.ibb.co/jZHXLw2G/Screenshot-20260308-022827-Google-2.jpg','https://i.ibb.co/jZHXLw2G/Screenshot-20260308-022827-Google-2.jpg']
+  },
 ];
 
 function renderProducts(filter = 'Todos') {
@@ -411,9 +588,7 @@ function openModal(id) {
     <div class="modal-gallery">
       <img class="modal-main-img" src="${p.img}" alt="${p.name}" id="mainImg">
       <div class="modal-thumbs">
-        <img class="modal-thumb active" src="${p.img}" onclick="swapImg(this, '${p.img}')">
-        <img class="modal-thumb" src="${p.img}" onclick="swapImg(this, '${p.img}')">
-        <img class="modal-thumb" src="${p.img}" onclick="swapImg(this, '${p.img}')">
+        ${(p.imgs || [p.img]).map((src, i) => `<img class="modal-thumb ${i===0?'active':''}" src="${src}" onclick="swapImg(this,'${src}')">`).join('')}
       </div>
     </div>
     <div class="modal-info">
@@ -434,8 +609,8 @@ function openModal(id) {
         <button class="btn-wishlist">♡</button>
       </div>
       <div class="modal-guarantee">
-        <p>🔏 <strong>Autenticidad garantizada</strong> — Verificación de 12 puntos incluida con cada compra.</p>
-        <p>📦 <strong>Envío express 24h</strong> — Embalaje premium discreto con número de seguimiento.</p>
+        <p>🔏 <strong>Autenticidad garantizada</strong> — Verificación de 12 puntos incluida.</p>
+        <p>📦 <strong>Envío express 24h</strong> — Embalaje premium con número de seguimiento.</p>
         <p>↩️ <strong>Devoluciones gratuitas 30 días</strong> — Sin preguntas, sin complicaciones.</p>
       </div>
     </div>
@@ -449,7 +624,6 @@ function swapImg(thumb, src) {
   document.querySelectorAll('.modal-thumb').forEach(t => t.classList.remove('active'));
   thumb.classList.add('active');
 }
-
 function closeModal() {
   document.getElementById('productModal').classList.remove('active');
   document.body.style.overflow = '';
@@ -459,58 +633,44 @@ document.getElementById('productModal').addEventListener('click', e => {
 });
 
 let cart = [];
-
 function addToCart(id) {
   const p = products.find(x => x.id === id);
   if (!p) return;
   const existing = cart.find(c => c.id === id);
   if (existing) existing.qty++;
   else cart.push({ ...p, qty: 1 });
-  updateCartUI();
-  toggleCart(true);
+  updateCartUI(); toggleCart(true);
 }
-
-function removeFromCart(id) {
-  cart = cart.filter(c => c.id !== id);
-  updateCartUI();
-}
-
+function removeFromCart(id) { cart = cart.filter(c => c.id !== id); updateCartUI(); }
 function updateCartUI() {
   const count = cart.reduce((a, c) => a + c.qty, 0);
   document.getElementById('cartCount').textContent = count;
   const total = cart.reduce((a, c) => a + c.price * c.qty, 0);
   document.getElementById('cartTotal').textContent = '€' + total.toLocaleString('es-ES');
   const itemsEl = document.getElementById('cartItems');
-  if (cart.length === 0) {
-    itemsEl.innerHTML = '<div class="cart-empty">Tu carrito está vacío</div>';
-  } else {
-    itemsEl.innerHTML = cart.map(c => `
-      <div class="cart-item">
-        <img class="cart-item-img" src="${c.img}" alt="${c.name}">
-        <div class="cart-item-info">
-          <div class="cart-item-name">${c.name}</div>
-          <div class="cart-item-cat">${c.category}</div>
-          <div class="cart-item-price">${c.currency}${c.price.toLocaleString('es-ES')} × ${c.qty}</div>
-        </div>
-        <button class="cart-item-remove" onclick="removeFromCart(${c.id})">✕</button>
+  if (cart.length === 0) { itemsEl.innerHTML = '<div class="cart-empty">Tu carrito está vacío</div>'; return; }
+  itemsEl.innerHTML = cart.map(c => `
+    <div class="cart-item">
+      <img class="cart-item-img" src="${c.img}" alt="${c.name}">
+      <div class="cart-item-info">
+        <div class="cart-item-name">${c.name}</div>
+        <div class="cart-item-cat">${c.category}</div>
+        <div class="cart-item-price">${c.currency}${c.price.toLocaleString('es-ES')} × ${c.qty}</div>
       </div>
-    `).join('');
-  }
+      <button class="cart-item-remove" onclick="removeFromCart(${c.id})">✕</button>
+    </div>
+  `).join('');
 }
-
 function toggleCart(forceOpen) {
-  const sidebar = document.getElementById('cartSidebar');
-  if (forceOpen === true) sidebar.classList.add('open');
-  else sidebar.classList.toggle('open');
+  const s = document.getElementById('cartSidebar');
+  if (forceOpen === true) s.classList.add('open');
+  else s.classList.toggle('open');
 }
-
 document.getElementById('cartBtn').addEventListener('click', () => toggleCart());
-
 function checkout() {
   if (cart.length === 0) return;
   alert('Para completar tu compra, configura tu pasarela de pago.\n\nTotal: €' + cart.reduce((a,c) => a + c.price * c.qty, 0).toLocaleString('es-ES'));
 }
-
 function handleFormSubmit(btn) {
   btn.textContent = '✓ Mensaje Enviado';
   btn.style.background = '#6EAD7A';
@@ -519,3 +679,4 @@ function handleFormSubmit(btn) {
 </script>
 </body>
 </html>
+                                                                                                                                 >
